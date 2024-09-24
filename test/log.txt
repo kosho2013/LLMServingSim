@@ -1,0 +1,270 @@
+Set parameter Username
+Academic license - for non-commercial use only - expires 2024-11-05
+Set parameter NonConvex to value 2
+Set parameter Threads to value 144
+Set parameter MIPGap to value 1.0000000474974513e-03
+Set parameter TimeLimit to value 3600
+Gurobi Optimizer version 10.0.3 build v10.0.3rc0 (linux64)
+
+CPU model: Intel(R) Xeon(R) CPU E7-8890 v3 @ 2.50GHz, instruction set [SSE2|AVX|AVX2]
+Thread count: 72 physical cores, 144 logical processors, using up to 144 threads
+
+Optimize a model with 56 rows, 146 columns and 94 nonzeros
+Model fingerprint: 0x7238f66b
+Model has 60 quadratic constraints
+Model has 49 general constraints
+Variable types: 60 continuous, 86 integer (30 binary)
+Coefficient statistics:
+  Matrix range     [6e-01, 3e+01]
+  QMatrix range    [5e-02, 2e+02]
+  QLMatrix range   [1e+00, 5e+05]
+  Objective range  [1e+00, 1e+00]
+  Bounds range     [1e+00, 1e+00]
+  RHS range        [1e+00, 2e+12]
+  QRHS range       [1e+00, 2e+03]
+  GenCon rhs range [1e+00, 2e+03]
+  GenCon coe range [1e+00, 1e+00]
+Warning: Model contains large rhs
+         Consider reformulating model or setting NumericFocus parameter
+         to avoid numerical issues.
+Presolve removed 50 rows and 128 columns
+Presolve time: 0.00s
+Presolved: 24 rows, 19 columns, 62 nonzeros
+Presolved model has 2 SOS constraint(s)
+Presolved model has 1 quadratic constraint(s)
+Presolved model has 5 bilinear constraint(s)
+Variable types: 3 continuous, 16 integer (2 binary)
+
+Root relaxation: objective 1.056000e+02, 4 iterations, 0.00 seconds (0.00 work units)
+
+    Nodes    |    Current Node    |     Objective Bounds      |     Work
+ Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
+
+     0     0  105.60000    0    2          -  105.60000      -     -    0s
+H    0     0                     185.5999976  105.60000  43.1%     -    0s
+H    0     0                     105.5999988  105.60000  0.00%     -    0s
+
+Explored 1 nodes (4 simplex iterations) in 0.02 seconds (0.00 work units)
+Thread count was 144 (of 144 available processors)
+
+Solution count 2: 105.6 185.6 
+
+Optimal solution found (tolerance 1.00e-03)
+Best objective 1.055999988079e+02, best bound 1.055999988079e+02, gap 0.0000%
+TP 1.0
+PP 1.0
+DP 1.0
+num_copy 1.0
+num_chips_per_copy 4.0
+Shape[0] 2.0
+Shape[1] 2.0
+Link_BW[0] 10.0
+Link_BW[1] 10.0
+FFT_dram_size 512.0
+layer_per_stage 1.0
+layers 1.0
+tile_size 1.0
+num_tile 1.0
+shard_M[0] 32.0
+shard_M[1] 32.0
+shard_K[0] 128.0
+shard_K[1] 128.0
+shard_N[0] 8.0
+shard_N[1] 8.0
+shard_intermediate_buffer_size[0] 512.0
+shard_initiation_buffer_size[0] 8192.0
+shard_initiation_buffer_size[1] 8192.0
+Micro_Batch_Size 1.0
+num_micro_batch_per_pipeline 1.0
+C25 1.0
+ALL_TO_ALL_communication_size_node[0] 0.0
+ALL_TO_ALL_communication_size_node[1] 128.0
+C28 0.0
+C29 16.0
+C30 2048.0
+Config[0] -0.0
+Config[1] -0.0
+A[0,0] 1.0
+A[1,0] 1.0
+B[0,0] 1.0
+D[0,0] 0.0
+Z[0,0] 1.0
+E[0,0] 0.0
+H[0,0] 1.0
+F[0,0] 1.0
+F[1,0] 1.0
+Par_lane[0] 1.0
+Par_lane[1] 1.0
+Par_stage[0] 2.0
+Par_stage[1] 2.0
+Par_total[0] 2.0
+Par_total[1] 2.0
+C48 1.0
+C49 1.0
+C50 0.0
+C51 0.0
+C52 1.0
+C53 1.0
+C54 0.0
+C55 0.0
+C56 1.0
+C57 1.0
+C58 1.0
+C59 1.0
+C60 1.0
+C61 1.0
+C62 0.0
+C63 0.0
+shard_intermediate_buffer_size_depth_original[0] 3145728.0
+shard_intermediate_buffer_size_depth_two[0] 1024.0
+shard_initiation_buffer_size_depth_one[0] 8192.0
+shard_initiation_buffer_size_depth_one[1] 8192.0
+tiling_factor[0] 1.0
+tiling_factor[1] 1.0
+C70 0.0
+C71 0.0
+SRAM_Per_Config_total[0] 0.0
+SRAM_Per_Config_intermediate_dram[0] 0.0
+SRAM_Per_Config_intermediate_onchip[0] 0.0
+SRAM_Per_Config_initiation[0] 0.0
+PMU_used_intermediate[0] 6.0
+PMU_used_initiation[0] 1.0
+PMU_used_initiation[1] 1.0
+PMU_used_per_config[0] 8.0
+dram_bytes_per_config_intermediate[0] 0.0
+dram_bytes_per_config_initiation[0] 16384.0
+C82 0.0
+dram_bytes_initiation 16384.0
+dram_bytes_intermediate 0.0
+dram_bytes_total 512.0
+DRAM_BW 150.0
+Cycle[0] 128.0
+Cycle[1] 128.0
+Cycle_w_streaming[0] 128.0
+Cycle_w_streaming[1] 128.0
+m_factor[0] 1.0
+m_factor[1] 1.0
+n_factor[0] 1.0
+n_factor[1] 1.0
+MMM[0] 1.0
+MMM[1] 1.0
+KKK[0] 128.0
+KKK[1] 128.0
+NNN[0] 1.0
+NNN[1] 1.0
+C101 1.0
+C102 1.0
+Compute_Latency[0] 79.99999880790712
+C104 128.0
+C105 128.0
+C106 128.0
+Memory_Latency[0] 0.0
+memory_latency[0] 0.0
+explicit_memory_latency[0] 0.0
+C110 0.0
+Network_Latency[0] 25.6
+p2p_latency 0.0
+Network_Latency_ALL_TO_ALL_tmp[0,0] 25.6
+Network_Latency_ALL_TO_ALL_tmp[0,1] 25.6
+Network_Latency_ALL_TO_ALL[0] 25.6
+C116 128.0
+C117 128.0
+Per_Config_II[0] 105.59999880790713
+C119 105.59999880790713
+ns_per_batch 105.59999880790713
+LINK_cost[0] 80.0
+LINK_cost[1] 80.0
+SWITCH_cost[0] 960.0
+SWITCH_cost[1] 960.0
+less_or_equal_one_chip 0.0
+less_or_equal_four_chip 1.0
+total_DRAM_cost 600.0
+total_accelerator_cost 66089.0
+total_link_cost 160.0
+total_switch_cost 0.0
+C131 160.0
+C132 1920.0
+total_cost 66849.0
+LINK_power[0] 2.0800000429153442
+LINK_power[1] 2.0800000429153442
+SWITCH_power[0] 2.0800000429153442
+SWITCH_power[1] 2.0800000429153442
+total_DRAM_power 97.48799800872803
+total_accelerator_power 1778.8248291015625
+total_link_power 4.1600000858306885
+total_switch_power 0.0
+C142 4.1600000858306885
+C143 4.1600000858306885
+total_power 1880.4728271961212
+final_ns 105.59999880790713
+------------Statistics------------
+FLOP per kernel:
+SYSTOLIC Step_1 32 128 32 1 262144
+SYSTOLIC Step_2 32 128 32 1 262144
+
+
+
+TP 1.0
+PP 1.0
+DP 1.0
+final_s 1.0559999880790713e-07
+Number of Chips 4
+Per-Accelerator Throughput (GFLOPS) 4915.2000732421875
+DRAM BW 150.0
+Link BW [10.0, 10.0]
+System Cost 66849.0
+System Power 1880.4728271961212
+Workload FLOP 524288.0
+System FLOPS Utilization 0.25252525161302963
+Optimizer Runtime (s) 0.5266878604888916
+
+
+
+
+------------------- Config 0 -----------------------
+on-chip traffic -----------------------------
+PCU array
+pcu on_chip_config 0 Step_1 0 1 128 Systolic 1 128 1 sender 0 1 2 receiver 6 
+pcu on_chip_config 0 Step_1 0 3 128 Systolic 1 128 1 sender 3 4 5 receiver 7 
+pcu on_chip_config 0 Step_2 1 0 128 Systolic 1 128 1 sender 999999 receiver 8 9 10 14 
+pcu on_chip_config 0 Step_2 1 2 128 Systolic 1 128 1 sender 999999 receiver 11 12 13 15 
+PMU array
+pmu on_chip_config 0 Step_1___Step_2 0 0 128 sender 8 receiver 0 
+pmu on_chip_config 0 Step_1___Step_2 0 2 128 sender 9 receiver 1 
+pmu on_chip_config 0 Step_1___Step_2 1 1 128 sender 10 receiver 2 
+pmu on_chip_config 0 Step_1___Step_2 1 3 128 sender 11 receiver 3 
+pmu on_chip_config 0 Step_1___Step_2 2 0 128 sender 12 receiver 4 
+pmu on_chip_config 0 Step_1___Step_2 2 2 128 sender 13 receiver 5 
+pmu on_chip_config 0 N/A___Step_1 3 1 128 sender 6 7 receiver 999999 
+pmu on_chip_config 0 N/A___Step_2 3 3 128 sender 14 15 receiver 999999 
+connection on_chip_config 0 pcu 0 1 pmu 0 0
+connection on_chip_config 0 pcu 0 1 pmu 0 2
+connection on_chip_config 0 pcu 0 1 pmu 1 1
+connection on_chip_config 0 pcu 0 3 pmu 1 3
+connection on_chip_config 0 pcu 0 3 pmu 2 0
+connection on_chip_config 0 pcu 0 3 pmu 2 2
+connection on_chip_config 0 pmu 3 1 pcu 0 1
+connection on_chip_config 0 pmu 3 1 pcu 0 3
+connection on_chip_config 0 pmu 0 0 pcu 1 0
+connection on_chip_config 0 pmu 0 2 pcu 1 0
+connection on_chip_config 0 pmu 1 1 pcu 1 0
+connection on_chip_config 0 pmu 1 3 pcu 1 2
+connection on_chip_config 0 pmu 2 0 pcu 1 2
+connection on_chip_config 0 pmu 2 2 pcu 1 2
+connection on_chip_config 0 pmu 3 3 pcu 1 0
+connection on_chip_config 0 pmu 3 3 pcu 1 2
+num_of_connections on_chip_config 0 16
+network_bytes off_chip_config 0 128.0
+off-chip traffic -----------------------------
+connection off_chip_config 0 router 0 0 router 1 0
+connection off_chip_config 0 router 1 0 router 1 1
+connection off_chip_config 0 router 0 0 router 1 1
+num_of_connections off_chip_config 0 3
+
+
+
+
+
+
+
+

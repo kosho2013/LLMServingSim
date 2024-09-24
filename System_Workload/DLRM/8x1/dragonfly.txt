@@ -1,0 +1,353 @@
+Compute_Latency [15000.0, 15000.0]
+Memory_Latency [168.79121, 156.28816]
+Network_Latency [28730.998, 0.0]
+num_tile 1
+num_config 2
+------------------------------- config: 0 -------------------------------------
+------------------------------- config: 1 -------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+------------------------------- config: 0 -------------------------------------
+--------  network, dragonfly --------
+num_connection:[0, 0, 0, 0, 0, 0, 0, 0]
+inter_link_dict:
+(3, 0): []
+(5, 0): []
+(1, 0): []
+(0, 0): []
+(7, 0): []
+(4, 0): []
+(2, 0): []
+(6, 0): []
+used_link_map:
+(4, 0, "intra_5", 2, 0, "intra_1"): 1
+(2, 0, "intra_4", 7, 0, "intra_2"): 1
+(3, 0, "intra_1", 5, 0, "intra_5"): 1
+(2, 0, "intra_3", 6, 0, "intra_3"): 1
+(0, 0, "intra_1", 2, 0, "intra_5"): 1
+(5, 0, "intra_2", 0, 0, "intra_4"): 1
+(4, 0, "intra_2", 7, 0, "intra_4"): 1
+(4, 0, "intra_6", 3, 0, "intra_0"): 1
+(5, 0, "intra_5", 3, 0, "intra_1"): 1
+(7, 0, "intra_6", 6, 0, "intra_0"): 1
+(1, 0, "intra_2", 4, 0, "intra_4"): 1
+(1, 0, "intra_4", 6, 0, "intra_2"): 1
+(5, 0, "intra_6", 4, 0, "intra_0"): 1
+(1, 0, "intra_5", 7, 0, "intra_1"): 1
+(6, 0, "intra_3", 2, 0, "intra_3"): 1
+(1, 0, "intra_6", 0, 0, "intra_0"): 1
+(6, 0, "intra_4", 3, 0, "intra_2"): 1
+(5, 0, "intra_0", 6, 0, "intra_6"): 1
+(3, 0, "intra_3", 7, 0, "intra_3"): 1
+(5, 0, "intra_3", 1, 0, "intra_3"): 1
+(5, 0, "intra_4", 2, 0, "intra_2"): 1
+(1, 0, "intra_3", 5, 0, "intra_3"): 1
+(3, 0, "intra_0", 4, 0, "intra_6"): 1
+(6, 0, "intra_5", 4, 0, "intra_1"): 1
+(2, 0, "intra_0", 3, 0, "intra_6"): 1
+(0, 0, "intra_0", 1, 0, "intra_6"): 1
+(4, 0, "intra_4", 1, 0, "intra_2"): 1
+(7, 0, "intra_3", 3, 0, "intra_3"): 1
+(0, 0, "intra_4", 5, 0, "intra_2"): 1
+(3, 0, "intra_2", 6, 0, "intra_4"): 1
+(3, 0, "intra_6", 2, 0, "intra_0"): 1
+(0, 0, "intra_3", 4, 0, "intra_3"): 1
+(3, 0, "intra_4", 0, 0, "intra_2"): 1
+(4, 0, "intra_3", 0, 0, "intra_3"): 1
+(6, 0, "intra_1", 0, 0, "intra_5"): 1
+(6, 0, "intra_2", 1, 0, "intra_4"): 1
+(7, 0, "intra_2", 2, 0, "intra_4"): 1
+(6, 0, "intra_6", 5, 0, "intra_0"): 1
+(7, 0, "intra_0", 0, 0, "intra_6"): 1
+(1, 0, "intra_0", 2, 0, "intra_6"): 1
+(4, 0, "intra_0", 5, 0, "intra_6"): 1
+(4, 0, "intra_1", 6, 0, "intra_5"): 1
+(2, 0, "intra_2", 5, 0, "intra_4"): 1
+(0, 0, "intra_5", 6, 0, "intra_1"): 1
+(1, 0, "intra_1", 3, 0, "intra_5"): 1
+(2, 0, "intra_6", 1, 0, "intra_0"): 1
+(6, 0, "intra_0", 7, 0, "intra_6"): 1
+(2, 0, "intra_1", 4, 0, "intra_5"): 1
+(7, 0, "intra_1", 1, 0, "intra_5"): 1
+(7, 0, "intra_4", 4, 0, "intra_2"): 1
+(7, 0, "intra_5", 5, 0, "intra_1"): 1
+(0, 0, "intra_6", 7, 0, "intra_0"): 1
+(3, 0, "intra_5", 1, 0, "intra_1"): 1
+(0, 0, "intra_2", 3, 0, "intra_4"): 1
+(5, 0, "intra_1", 7, 0, "intra_5"): 1
+(2, 0, "intra_5", 0, 0, "intra_1"): 1
+(2, 0, "from_L", 2, 0, "from_L"): 7
+(7, 0, "to_L", 7, 0, "to_L"): 7
+(4, 0, "to_L", 4, 0, "to_L"): 7
+(2, 0, "to_L", 2, 0, "to_L"): 7
+(5, 0, "to_L", 5, 0, "to_L"): 7
+(0, 0, "to_L", 0, 0, "to_L"): 7
+(6, 0, "from_L", 6, 0, "from_L"): 7
+(7, 0, "from_L", 7, 0, "from_L"): 7
+(3, 0, "to_L", 3, 0, "to_L"): 7
+(4, 0, "from_L", 4, 0, "from_L"): 7
+(0, 0, "from_L", 0, 0, "from_L"): 7
+(5, 0, "from_L", 5, 0, "from_L"): 7
+(3, 0, "from_L", 3, 0, "from_L"): 7
+(6, 0, "to_L", 6, 0, "to_L"): 7
+(1, 0, "to_L", 1, 0, "to_L"): 7
+(1, 0, "from_L", 1, 0, "from_L"): 7
+all_routers{(3, 0), (5, 0), (4, 0), (6, 0), (0, 0), (2, 0), (7, 0), (1, 0)}
+dst_dict:{(5, 0): [0, 1, 2, 3, 4, 6, 7], (4, 0): [0, 1, 2, 3, 5, 6, 7], (2, 0): [0, 1, 3, 4, 5, 6, 7], (3, 0): [0, 1, 2, 4, 5, 6, 7], (7, 0): [0, 1, 2, 3, 4, 5, 6], (0, 0): [1, 2, 3, 4, 5, 6, 7], (1, 0): [0, 2, 3, 4, 5, 6, 7], (6, 0): [0, 1, 2, 3, 4, 5, 7]}
+-------------------------- 3, 0 -------------------------------
+-------------------------- 5, 0 -------------------------------
+-------------------------- 4, 0 -------------------------------
+-------------------------- 6, 0 -------------------------------
+-------------------------- 0, 0 -------------------------------
+-------------------------- 2, 0 -------------------------------
+-------------------------- 7, 0 -------------------------------
+-------------------------- 1, 0 -------------------------------
+digraph ProgramGraph {
+    Node_0[shape="rectangle",label="GeneratorContext(ID_0)"]
+    Node_1[shape="rectangle",label="GeneratorContext(ID_1)"]
+    Node_2[shape="rectangle",label="GeneratorContext(ID_2)"]
+    Node_3[shape="rectangle",label="GeneratorContext(ID_3)"]
+    Node_4[shape="rectangle",label="GeneratorContext(ID_4)"]
+    Node_5[shape="rectangle",label="GeneratorContext(ID_5)"]
+    Node_6[shape="rectangle",label="GeneratorContext(ID_6)"]
+    Node_7[shape="rectangle",label="to_router(ID_7)"]
+    Node_8[shape="rectangle",label="ConsumerContext(ID_8)"]
+    Node_9[shape="rectangle",label="router_dragonfly(ID_9)"]
+    Node_10[shape="rectangle",label="GeneratorContext(ID_10)"]
+    Node_11[shape="rectangle",label="GeneratorContext(ID_11)"]
+    Node_12[shape="rectangle",label="GeneratorContext(ID_12)"]
+    Node_13[shape="rectangle",label="GeneratorContext(ID_13)"]
+    Node_14[shape="rectangle",label="GeneratorContext(ID_14)"]
+    Node_15[shape="rectangle",label="GeneratorContext(ID_15)"]
+    Node_16[shape="rectangle",label="GeneratorContext(ID_16)"]
+    Node_17[shape="rectangle",label="to_router(ID_17)"]
+    Node_18[shape="rectangle",label="ConsumerContext(ID_18)"]
+    Node_19[shape="rectangle",label="router_dragonfly(ID_19)"]
+    Node_20[shape="rectangle",label="GeneratorContext(ID_20)"]
+    Node_21[shape="rectangle",label="GeneratorContext(ID_21)"]
+    Node_22[shape="rectangle",label="GeneratorContext(ID_22)"]
+    Node_23[shape="rectangle",label="GeneratorContext(ID_23)"]
+    Node_24[shape="rectangle",label="GeneratorContext(ID_24)"]
+    Node_25[shape="rectangle",label="GeneratorContext(ID_25)"]
+    Node_26[shape="rectangle",label="GeneratorContext(ID_26)"]
+    Node_27[shape="rectangle",label="to_router(ID_27)"]
+    Node_28[shape="rectangle",label="ConsumerContext(ID_28)"]
+    Node_29[shape="rectangle",label="router_dragonfly(ID_29)"]
+    Node_30[shape="rectangle",label="GeneratorContext(ID_30)"]
+    Node_31[shape="rectangle",label="GeneratorContext(ID_31)"]
+    Node_32[shape="rectangle",label="GeneratorContext(ID_32)"]
+    Node_33[shape="rectangle",label="GeneratorContext(ID_33)"]
+    Node_34[shape="rectangle",label="GeneratorContext(ID_34)"]
+    Node_35[shape="rectangle",label="GeneratorContext(ID_35)"]
+    Node_36[shape="rectangle",label="GeneratorContext(ID_36)"]
+    Node_37[shape="rectangle",label="to_router(ID_37)"]
+    Node_38[shape="rectangle",label="ConsumerContext(ID_38)"]
+    Node_39[shape="rectangle",label="router_dragonfly(ID_39)"]
+    Node_40[shape="rectangle",label="GeneratorContext(ID_40)"]
+    Node_41[shape="rectangle",label="GeneratorContext(ID_41)"]
+    Node_42[shape="rectangle",label="GeneratorContext(ID_42)"]
+    Node_43[shape="rectangle",label="GeneratorContext(ID_43)"]
+    Node_44[shape="rectangle",label="GeneratorContext(ID_44)"]
+    Node_45[shape="rectangle",label="GeneratorContext(ID_45)"]
+    Node_46[shape="rectangle",label="GeneratorContext(ID_46)"]
+    Node_47[shape="rectangle",label="to_router(ID_47)"]
+    Node_48[shape="rectangle",label="ConsumerContext(ID_48)"]
+    Node_49[shape="rectangle",label="router_dragonfly(ID_49)"]
+    Node_50[shape="rectangle",label="GeneratorContext(ID_50)"]
+    Node_51[shape="rectangle",label="GeneratorContext(ID_51)"]
+    Node_52[shape="rectangle",label="GeneratorContext(ID_52)"]
+    Node_53[shape="rectangle",label="GeneratorContext(ID_53)"]
+    Node_54[shape="rectangle",label="GeneratorContext(ID_54)"]
+    Node_55[shape="rectangle",label="GeneratorContext(ID_55)"]
+    Node_56[shape="rectangle",label="GeneratorContext(ID_56)"]
+    Node_57[shape="rectangle",label="to_router(ID_57)"]
+    Node_58[shape="rectangle",label="ConsumerContext(ID_58)"]
+    Node_59[shape="rectangle",label="router_dragonfly(ID_59)"]
+    Node_60[shape="rectangle",label="GeneratorContext(ID_60)"]
+    Node_61[shape="rectangle",label="GeneratorContext(ID_61)"]
+    Node_62[shape="rectangle",label="GeneratorContext(ID_62)"]
+    Node_63[shape="rectangle",label="GeneratorContext(ID_63)"]
+    Node_64[shape="rectangle",label="GeneratorContext(ID_64)"]
+    Node_65[shape="rectangle",label="GeneratorContext(ID_65)"]
+    Node_66[shape="rectangle",label="GeneratorContext(ID_66)"]
+    Node_67[shape="rectangle",label="to_router(ID_67)"]
+    Node_68[shape="rectangle",label="ConsumerContext(ID_68)"]
+    Node_69[shape="rectangle",label="router_dragonfly(ID_69)"]
+    Node_70[shape="rectangle",label="GeneratorContext(ID_70)"]
+    Node_71[shape="rectangle",label="GeneratorContext(ID_71)"]
+    Node_72[shape="rectangle",label="GeneratorContext(ID_72)"]
+    Node_73[shape="rectangle",label="GeneratorContext(ID_73)"]
+    Node_74[shape="rectangle",label="GeneratorContext(ID_74)"]
+    Node_75[shape="rectangle",label="GeneratorContext(ID_75)"]
+    Node_76[shape="rectangle",label="GeneratorContext(ID_76)"]
+    Node_77[shape="rectangle",label="to_router(ID_77)"]
+    Node_78[shape="rectangle",label="ConsumerContext(ID_78)"]
+    Node_79[shape="rectangle",label="router_dragonfly(ID_79)"]
+    Node_29 -> Node_59 [label="Channel(0)",tooltip="Capacity: None\nLatency: 1\nRespLatency: 1"]
+    Node_59 -> Node_69 [label="Channel(1)",tooltip="Capacity: None\nLatency: 1\nRespLatency: 1"]
+    Node_9 -> Node_19 [label="Channel(2)",tooltip="Capacity: None\nLatency: 1\nRespLatency: 1"]
+    Node_57 -> Node_59 [label="Channel(3)",tooltip="Capacity: None\nLatency: 1\nRespLatency: 1"]
+    Node_59 -> Node_39 [label="Channel(4)",tooltip="Capacity: None\nLatency: 1\nRespLatency: 1"]
+    Node_49 -> Node_59 [label="Channel(5)",tooltip="Capacity: None\nLatency: 1\nRespLatency: 1"]
+    Node_19 -> Node_49 [label="Channel(6)",tooltip="Capacity: None\nLatency: 1\nRespLatency: 1"]
+    Node_29 -> Node_69 [label="Channel(7)",tooltip="Capacity: None\nLatency: 1\nRespLatency: 1"]
+    Node_69 -> Node_68 [label="Channel(8)",tooltip="Capacity: None\nLatency: 1\nRespLatency: 1"]
+    Node_29 -> Node_28 [label="Channel(9)",tooltip="Capacity: None\nLatency: 1\nRespLatency: 1"]
+    Node_29 -> Node_9 [label="Channel(10)",tooltip="Capacity: None\nLatency: 1\nRespLatency: 1"]
+    Node_19 -> Node_9 [label="Channel(11)",tooltip="Capacity: None\nLatency: 1\nRespLatency: 1"]
+    Node_69 -> Node_39 [label="Channel(12)",tooltip="Capacity: None\nLatency: 1\nRespLatency: 1"]
+    Node_79 -> Node_29 [label="Channel(13)",tooltip="Capacity: None\nLatency: 1\nRespLatency: 1"]
+    Node_79 -> Node_39 [label="Channel(14)",tooltip="Capacity: None\nLatency: 1\nRespLatency: 1"]
+    Node_19 -> Node_29 [label="Channel(15)",tooltip="Capacity: None\nLatency: 1\nRespLatency: 1"]
+    Node_79 -> Node_69 [label="Channel(16)",tooltip="Capacity: None\nLatency: 1\nRespLatency: 1"]
+    Node_39 -> Node_59 [label="Channel(17)",tooltip="Capacity: None\nLatency: 1\nRespLatency: 1"]
+    Node_79 -> Node_49 [label="Channel(18)",tooltip="Capacity: None\nLatency: 1\nRespLatency: 1"]
+    Node_39 -> Node_9 [label="Channel(19)",tooltip="Capacity: None\nLatency: 1\nRespLatency: 1"]
+    Node_59 -> Node_58 [label="Channel(20)",tooltip="Capacity: None\nLatency: 1\nRespLatency: 1"]
+    Node_19 -> Node_39 [label="Channel(21)",tooltip="Capacity: None\nLatency: 1\nRespLatency: 1"]
+    Node_9 -> Node_69 [label="Channel(22)",tooltip="Capacity: None\nLatency: 1\nRespLatency: 1"]
+    Node_19 -> Node_79 [label="Channel(23)",tooltip="Capacity: None\nLatency: 1\nRespLatency: 1"]
+    Node_19 -> Node_59 [label="Channel(24)",tooltip="Capacity: None\nLatency: 1\nRespLatency: 1"]
+    Node_79 -> Node_19 [label="Channel(25)",tooltip="Capacity: None\nLatency: 1\nRespLatency: 1"]
+    Node_9 -> Node_29 [label="Channel(26)",tooltip="Capacity: None\nLatency: 1\nRespLatency: 1"]
+    Node_39 -> Node_29 [label="Channel(27)",tooltip="Capacity: None\nLatency: 1\nRespLatency: 1"]
+    Node_59 -> Node_9 [label="Channel(28)",tooltip="Capacity: None\nLatency: 1\nRespLatency: 1"]
+    Node_49 -> Node_79 [label="Channel(29)",tooltip="Capacity: None\nLatency: 1\nRespLatency: 1"]
+    Node_29 -> Node_79 [label="Channel(30)",tooltip="Capacity: None\nLatency: 1\nRespLatency: 1"]
+    Node_69 -> Node_9 [label="Channel(31)",tooltip="Capacity: None\nLatency: 1\nRespLatency: 1"]
+    Node_49 -> Node_19 [label="Channel(32)",tooltip="Capacity: None\nLatency: 1\nRespLatency: 1"]
+    Node_9 -> Node_39 [label="Channel(33)",tooltip="Capacity: None\nLatency: 1\nRespLatency: 1"]
+    Node_9 -> Node_59 [label="Channel(34)",tooltip="Capacity: None\nLatency: 1\nRespLatency: 1"]
+    Node_19 -> Node_18 [label="Channel(35)",tooltip="Capacity: None\nLatency: 1\nRespLatency: 1"]
+    Node_49 -> Node_29 [label="Channel(36)",tooltip="Capacity: None\nLatency: 1\nRespLatency: 1"]
+    Node_49 -> Node_48 [label="Channel(37)",tooltip="Capacity: None\nLatency: 1\nRespLatency: 1"]
+    Node_37 -> Node_39 [label="Channel(38)",tooltip="Capacity: None\nLatency: 1\nRespLatency: 1"]
+    Node_9 -> Node_49 [label="Channel(39)",tooltip="Capacity: None\nLatency: 1\nRespLatency: 1"]
+    Node_29 -> Node_49 [label="Channel(40)",tooltip="Capacity: None\nLatency: 1\nRespLatency: 1"]
+    Node_39 -> Node_49 [label="Channel(41)",tooltip="Capacity: None\nLatency: 1\nRespLatency: 1"]
+    Node_39 -> Node_79 [label="Channel(42)",tooltip="Capacity: None\nLatency: 1\nRespLatency: 1"]
+    Node_69 -> Node_59 [label="Channel(43)",tooltip="Capacity: None\nLatency: 1\nRespLatency: 1"]
+    Node_39 -> Node_19 [label="Channel(44)",tooltip="Capacity: None\nLatency: 1\nRespLatency: 1"]
+    Node_67 -> Node_69 [label="Channel(45)",tooltip="Capacity: None\nLatency: 1\nRespLatency: 1"]
+    Node_9 -> Node_8 [label="Channel(46)",tooltip="Capacity: None\nLatency: 1\nRespLatency: 1"]
+    Node_27 -> Node_29 [label="Channel(47)",tooltip="Capacity: None\nLatency: 1\nRespLatency: 1"]
+    Node_69 -> Node_49 [label="Channel(48)",tooltip="Capacity: None\nLatency: 1\nRespLatency: 1"]
+    Node_47 -> Node_49 [label="Channel(49)",tooltip="Capacity: None\nLatency: 1\nRespLatency: 1"]
+    Node_79 -> Node_59 [label="Channel(50)",tooltip="Capacity: None\nLatency: 1\nRespLatency: 1"]
+    Node_29 -> Node_19 [label="Channel(51)",tooltip="Capacity: None\nLatency: 1\nRespLatency: 1"]
+    Node_29 -> Node_39 [label="Channel(52)",tooltip="Capacity: None\nLatency: 1\nRespLatency: 1"]
+    Node_17 -> Node_19 [label="Channel(53)",tooltip="Capacity: None\nLatency: 1\nRespLatency: 1"]
+    Node_7 -> Node_9 [label="Channel(54)",tooltip="Capacity: None\nLatency: 1\nRespLatency: 1"]
+    Node_59 -> Node_19 [label="Channel(55)",tooltip="Capacity: None\nLatency: 1\nRespLatency: 1"]
+    Node_49 -> Node_39 [label="Channel(56)",tooltip="Capacity: None\nLatency: 1\nRespLatency: 1"]
+    Node_79 -> Node_9 [label="Channel(57)",tooltip="Capacity: None\nLatency: 1\nRespLatency: 1"]
+    Node_59 -> Node_79 [label="Channel(58)",tooltip="Capacity: None\nLatency: 1\nRespLatency: 1"]
+    Node_39 -> Node_69 [label="Channel(59)",tooltip="Capacity: None\nLatency: 1\nRespLatency: 1"]
+    Node_39 -> Node_38 [label="Channel(60)",tooltip="Capacity: None\nLatency: 1\nRespLatency: 1"]
+    Node_59 -> Node_29 [label="Channel(61)",tooltip="Capacity: None\nLatency: 1\nRespLatency: 1"]
+    Node_69 -> Node_79 [label="Channel(62)",tooltip="Capacity: None\nLatency: 1\nRespLatency: 1"]
+    Node_69 -> Node_29 [label="Channel(63)",tooltip="Capacity: None\nLatency: 1\nRespLatency: 1"]
+    Node_79 -> Node_78 [label="Channel(64)",tooltip="Capacity: None\nLatency: 1\nRespLatency: 1"]
+    Node_69 -> Node_19 [label="Channel(65)",tooltip="Capacity: None\nLatency: 1\nRespLatency: 1"]
+    Node_49 -> Node_69 [label="Channel(66)",tooltip="Capacity: None\nLatency: 1\nRespLatency: 1"]
+    Node_9 -> Node_79 [label="Channel(67)",tooltip="Capacity: None\nLatency: 1\nRespLatency: 1"]
+    Node_49 -> Node_9 [label="Channel(68)",tooltip="Capacity: None\nLatency: 1\nRespLatency: 1"]
+    Node_77 -> Node_79 [label="Channel(69)",tooltip="Capacity: None\nLatency: 1\nRespLatency: 1"]
+    Node_19 -> Node_69 [label="Channel(70)",tooltip="Capacity: None\nLatency: 1\nRespLatency: 1"]
+    Node_59 -> Node_49 [label="Channel(71)",tooltip="Capacity: None\nLatency: 1\nRespLatency: 1"]
+    Node_0 -> Node_7 [label="Channel(72)",tooltip="Capacity: None\nLatency: 1\nRespLatency: 1"]
+    Node_1 -> Node_7 [label="Channel(73)",tooltip="Capacity: None\nLatency: 1\nRespLatency: 1"]
+    Node_2 -> Node_7 [label="Channel(74)",tooltip="Capacity: None\nLatency: 1\nRespLatency: 1"]
+    Node_3 -> Node_7 [label="Channel(75)",tooltip="Capacity: None\nLatency: 1\nRespLatency: 1"]
+    Node_4 -> Node_7 [label="Channel(76)",tooltip="Capacity: None\nLatency: 1\nRespLatency: 1"]
+    Node_5 -> Node_7 [label="Channel(77)",tooltip="Capacity: None\nLatency: 1\nRespLatency: 1"]
+    Node_6 -> Node_7 [label="Channel(78)",tooltip="Capacity: None\nLatency: 1\nRespLatency: 1"]
+    Node_10 -> Node_17 [label="Channel(79)",tooltip="Capacity: None\nLatency: 1\nRespLatency: 1"]
+    Node_11 -> Node_17 [label="Channel(80)",tooltip="Capacity: None\nLatency: 1\nRespLatency: 1"]
+    Node_12 -> Node_17 [label="Channel(81)",tooltip="Capacity: None\nLatency: 1\nRespLatency: 1"]
+    Node_13 -> Node_17 [label="Channel(82)",tooltip="Capacity: None\nLatency: 1\nRespLatency: 1"]
+    Node_14 -> Node_17 [label="Channel(83)",tooltip="Capacity: None\nLatency: 1\nRespLatency: 1"]
+    Node_15 -> Node_17 [label="Channel(84)",tooltip="Capacity: None\nLatency: 1\nRespLatency: 1"]
+    Node_16 -> Node_17 [label="Channel(85)",tooltip="Capacity: None\nLatency: 1\nRespLatency: 1"]
+    Node_20 -> Node_27 [label="Channel(86)",tooltip="Capacity: None\nLatency: 1\nRespLatency: 1"]
+    Node_21 -> Node_27 [label="Channel(87)",tooltip="Capacity: None\nLatency: 1\nRespLatency: 1"]
+    Node_22 -> Node_27 [label="Channel(88)",tooltip="Capacity: None\nLatency: 1\nRespLatency: 1"]
+    Node_23 -> Node_27 [label="Channel(89)",tooltip="Capacity: None\nLatency: 1\nRespLatency: 1"]
+    Node_24 -> Node_27 [label="Channel(90)",tooltip="Capacity: None\nLatency: 1\nRespLatency: 1"]
+    Node_25 -> Node_27 [label="Channel(91)",tooltip="Capacity: None\nLatency: 1\nRespLatency: 1"]
+    Node_26 -> Node_27 [label="Channel(92)",tooltip="Capacity: None\nLatency: 1\nRespLatency: 1"]
+    Node_30 -> Node_37 [label="Channel(93)",tooltip="Capacity: None\nLatency: 1\nRespLatency: 1"]
+    Node_31 -> Node_37 [label="Channel(94)",tooltip="Capacity: None\nLatency: 1\nRespLatency: 1"]
+    Node_32 -> Node_37 [label="Channel(95)",tooltip="Capacity: None\nLatency: 1\nRespLatency: 1"]
+    Node_33 -> Node_37 [label="Channel(96)",tooltip="Capacity: None\nLatency: 1\nRespLatency: 1"]
+    Node_34 -> Node_37 [label="Channel(97)",tooltip="Capacity: None\nLatency: 1\nRespLatency: 1"]
+    Node_35 -> Node_37 [label="Channel(98)",tooltip="Capacity: None\nLatency: 1\nRespLatency: 1"]
+    Node_36 -> Node_37 [label="Channel(99)",tooltip="Capacity: None\nLatency: 1\nRespLatency: 1"]
+    Node_40 -> Node_47 [label="Channel(100)",tooltip="Capacity: None\nLatency: 1\nRespLatency: 1"]
+    Node_41 -> Node_47 [label="Channel(101)",tooltip="Capacity: None\nLatency: 1\nRespLatency: 1"]
+    Node_42 -> Node_47 [label="Channel(102)",tooltip="Capacity: None\nLatency: 1\nRespLatency: 1"]
+    Node_43 -> Node_47 [label="Channel(103)",tooltip="Capacity: None\nLatency: 1\nRespLatency: 1"]
+    Node_44 -> Node_47 [label="Channel(104)",tooltip="Capacity: None\nLatency: 1\nRespLatency: 1"]
+    Node_45 -> Node_47 [label="Channel(105)",tooltip="Capacity: None\nLatency: 1\nRespLatency: 1"]
+    Node_46 -> Node_47 [label="Channel(106)",tooltip="Capacity: None\nLatency: 1\nRespLatency: 1"]
+    Node_50 -> Node_57 [label="Channel(107)",tooltip="Capacity: None\nLatency: 1\nRespLatency: 1"]
+    Node_51 -> Node_57 [label="Channel(108)",tooltip="Capacity: None\nLatency: 1\nRespLatency: 1"]
+    Node_52 -> Node_57 [label="Channel(109)",tooltip="Capacity: None\nLatency: 1\nRespLatency: 1"]
+    Node_53 -> Node_57 [label="Channel(110)",tooltip="Capacity: None\nLatency: 1\nRespLatency: 1"]
+    Node_54 -> Node_57 [label="Channel(111)",tooltip="Capacity: None\nLatency: 1\nRespLatency: 1"]
+    Node_55 -> Node_57 [label="Channel(112)",tooltip="Capacity: None\nLatency: 1\nRespLatency: 1"]
+    Node_56 -> Node_57 [label="Channel(113)",tooltip="Capacity: None\nLatency: 1\nRespLatency: 1"]
+    Node_60 -> Node_67 [label="Channel(114)",tooltip="Capacity: None\nLatency: 1\nRespLatency: 1"]
+    Node_61 -> Node_67 [label="Channel(115)",tooltip="Capacity: None\nLatency: 1\nRespLatency: 1"]
+    Node_62 -> Node_67 [label="Channel(116)",tooltip="Capacity: None\nLatency: 1\nRespLatency: 1"]
+    Node_63 -> Node_67 [label="Channel(117)",tooltip="Capacity: None\nLatency: 1\nRespLatency: 1"]
+    Node_64 -> Node_67 [label="Channel(118)",tooltip="Capacity: None\nLatency: 1\nRespLatency: 1"]
+    Node_65 -> Node_67 [label="Channel(119)",tooltip="Capacity: None\nLatency: 1\nRespLatency: 1"]
+    Node_66 -> Node_67 [label="Channel(120)",tooltip="Capacity: None\nLatency: 1\nRespLatency: 1"]
+    Node_70 -> Node_77 [label="Channel(121)",tooltip="Capacity: None\nLatency: 1\nRespLatency: 1"]
+    Node_71 -> Node_77 [label="Channel(122)",tooltip="Capacity: None\nLatency: 1\nRespLatency: 1"]
+    Node_72 -> Node_77 [label="Channel(123)",tooltip="Capacity: None\nLatency: 1\nRespLatency: 1"]
+    Node_73 -> Node_77 [label="Channel(124)",tooltip="Capacity: None\nLatency: 1\nRespLatency: 1"]
+    Node_74 -> Node_77 [label="Channel(125)",tooltip="Capacity: None\nLatency: 1\nRespLatency: 1"]
+    Node_75 -> Node_77 [label="Channel(126)",tooltip="Capacity: None\nLatency: 1\nRespLatency: 1"]
+    Node_76 -> Node_77 [label="Channel(127)",tooltip="Capacity: None\nLatency: 1\nRespLatency: 1"]
+}
+finished!!!!!!!!!!!!!!!!!!!!!!! 2, 0
+finished!!!!!!!!!!!!!!!!!!!!!!! 1, 0
+finished!!!!!!!!!!!!!!!!!!!!!!! 0, 0
+finished!!!!!!!!!!!!!!!!!!!!!!! 7, 0
+finished!!!!!!!!!!!!!!!!!!!!!!! 6, 0
+finished!!!!!!!!!!!!!!!!!!!!!!! 5, 0
+finished!!!!!!!!!!!!!!!!!!!!!!! 4, 0
+finished!!!!!!!!!!!!!!!!!!!!!!! 3, 0
+Elapsed cycles: Some(228)
+Runtime (s): 0.03324665
+
+
+
+
+
+
+
+
+
+
+
+------------------------------- config: 1 -------------------------------------
+dfmodel_compute_time:[15000.0, 15000.0], total:30000
+dfmodel_memory_time:[168.79121, 156.28816], total:325.07938
+dfmodel_network_time:[28730.998, 0.0], total:28730.998
+dfmodel_time:[28730.998, 15000.0], total:43731
+dam_compute_time:[0.0, 0.0], total:0
+dam_memory_time:[168.79121, 156.28816], total:325.07938
+dam_network_time:[1824.0, 0.0], total:1824
+dam_time:[1824.0, 156.28816], total:1980.2882

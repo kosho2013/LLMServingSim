@@ -1,0 +1,36 @@
+[package]
+name = "DAMSim"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+dam = { git = "https://github.com/stanford-ppl/DAM-RS.git", branch = "dev", default-features=true, features = ["coroutines", "dot"]}
+num = "0.4.1"
+serde_derive = "1.0.181"
+serde = "1.0.181"
+toml = "0.7.6"
+home = "0.5.5"
+frunk = "0.4.2"
+linkme = "0.3.14"
+criterion = "0.5.1"
+prost = "0.11.9"
+prost-types = "0.11.9"
+bytes = "1.4.0"
+ndarray = "0.15.6"
+itertools = "0.11.0"
+num-traits = "0.2.16"
+rand_distr = "0.4.3"
+rand = "0.8.5"
+clap = { version = "4.4.18", features = ["derive"] }
+anyhow = "1.0.80"
+strum = { version = "0.26", features = ["derive"] }
+half = "2.4.1"
+cfg-if = "1.0.0"
+protobuf = "3.4.0"
+protobuf-codegen = "3.4.0"
+
+
+[build-dependencies]
+prost-build = "0.11.9"
+
+

@@ -1,0 +1,21 @@
+accelerator
+{
+    optimize_pr: true
+	num_iterations: 1000
+    num_swapped: 500
+
+    x_off_chip: 4
+    y_off_chip: 4
+
+    x_on_chip: 40
+    y_on_chip: 52
+
+    lane_dim: 32
+    stage_dim: 6
+    freq: 1.6
+    word: 2
+
+    sram_cap: 524288
+
+    net_bw: 10
+}

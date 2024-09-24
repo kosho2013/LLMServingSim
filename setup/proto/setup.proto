@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+package setup;
+
+message Accelerator {
+	// on-chip P&R optimization
+	bool optimize_pr = 1000;
+	int64 num_iterations = 1001;
+	int64 num_swapped = 1002;
+
+	// on-chip
+	int64 x_on_chip = 1;
+	int64 y_on_chip = 2;
+
+	// off-chip
+	int64 x_off_chip = 100;
+	int64 y_off_chip = 200;
+	
+	// compute tile
+	int64 lane_dim = 5;
+	int64 stage_dim = 6;
+	float freq = 7; // GHz
+	int64 word = 8;
+
+	// memory tile
+	float sram_cap = 9; // bytes
+
+	// network
+	float net_bw = 14; // GB/s
+	float buffer_depth = 15; // bytes
+}
+
+message System {
+	Accelerator accelerator = 1;
+}
