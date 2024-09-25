@@ -1,0 +1,8 @@
+level2_bw: 13107.2
+level3_bw: 1024
+weight_size: 12
+kvcache_size: 2
+
+Memory Traffic 1:
+level3 level2 weight_size
+level3 level2 kvcache_size

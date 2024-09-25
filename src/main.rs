@@ -2,6 +2,7 @@ extern crate protobuf;
 
 pub mod templates;
 
+use std::iter::FlatMap;
 use std::mem;
 use rand::seq::SliceRandom; // Import the SliceRandom trait
 use rand::Rng;
@@ -21,11 +22,15 @@ use dam::utility_contexts::{ConsumerContext, FunctionContext, GeneratorContext, 
 use prost::Message;
 use dam::{logging::LogEvent, simulation::*};
 use dam::{shim::RunMode, simulation::{DotConvertible, InitializationOptionsBuilder, ProgramBuilder, RunOptionsBuilder}};
+use serde::{Deserialize, Serialize};
+use std::fs::File;
+use std::io::Read;
+
 
 fn main()
 {
-    let level2_bw = 13107.2;
-    let level3_bw = 1024;
+
+    
 
     // define the program builder
     let mut parent = ProgramBuilder::default();
