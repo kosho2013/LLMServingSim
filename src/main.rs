@@ -24,6 +24,9 @@ use dam::{shim::RunMode, simulation::{DotConvertible, InitializationOptionsBuild
 
 fn main()
 {
+    let level2_bw = 13107.2;
+    let level3_bw = 1024;
+
     // define the program builder
     let mut parent = ProgramBuilder::default();
     let capacity = 1000;
