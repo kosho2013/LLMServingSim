@@ -1,29 +1,29 @@
 use dam::context_tools::*;
 use ndarray::Array;
 
-use crate::types::tensor;
+use super::tensor;
 
 #[context_macro]
-pub struct GPU_L1 {
-    // gpu_l1_sender:Sender<tensor::tensor>,
-    pub gpu_l1_receiver:Receiver<tensor::tensor>,
+pub struct sram {
+    // sram_sender:Sender<tensor::tensor>,
+    pub sram_receiver:Receiver<tensor::tensor>,
 }
 
-impl GPU_L1 {
+impl sram {
     pub fn init(receiver:Receiver<tensor::tensor>) -> Self {
-        let l1 = GPU_L1 {
-            gpu_l1_receiver: receiver,
+        let l1 = sram {
+            sram_receiver: receiver,
             context_info: Default::default()
         };
-        l1.gpu_l1_receiver.attach_receiver(&l1);
+        l1.sram_receiver.attach_receiver(&l1);
         l1
     }
 }
 
-impl Context for GPU_L1 {
+impl Context for sram {
     fn run (&mut self)
     {
-        let peek_result = self.gpu_l1_receiver.peek_next(&self.time);
+        let peek_result = self.sram_receiver.peek_next(&self.time);
 
         match peek_result {
             Ok(channel_status) => {
@@ -33,7 +33,7 @@ impl Context for GPU_L1 {
             Err(_channel_status) => println!("Channel is closed")
         }
 
-        let dequeue_result = self.gpu_l1_receiver.dequeue(&self.time);
+        let dequeue_result = self.sram_receiver.dequeue(&self.time);
 
         match dequeue_result {
             Ok(channel_status) => {

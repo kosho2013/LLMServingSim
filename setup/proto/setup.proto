@@ -4,11 +4,13 @@ package setup;
 
 message System
 {
-	// HBM bandwidth
-	float HBM_BW = 1;
+	float SRAM_Capacity = 10; // GB
 
-	// DDR bandwdth
-	float DDR_BW = 2;
+	float HBM_BW = 1; // GB/s
+	float HBM_Capacity = 2; // GB
+
+	float DDR_BW = 3; // GB/s
+	float DDR_Capacity = 4; // GB
 }
 
 

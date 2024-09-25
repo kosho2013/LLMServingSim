@@ -1,26 +1,26 @@
 use dam::context_tools::*;
 use ndarray::{ArcArray, Array};
 
-use crate::types::tensor;
+use super::tensor;
 
 #[context_macro]
-pub struct Worker {
-    pub worker_sender:Sender<tensor::tensor>,
-    // worker_receiver:Receiver<tensor::tensor>,
+pub struct accelerator {
+    pub accelerator_sender:Sender<tensor::tensor>,
+    // accelerator_receiver:Receiver<tensor::tensor>,
 }
 
-impl Worker {
+impl accelerator {
     pub fn init(sender:Sender<tensor::tensor>) -> Self {
-        let w = Worker {
-            worker_sender: sender,
+        let w = accelerator {
+            accelerator_sender: sender,
             context_info: Default::default()
         };
-        w.worker_sender.attach_sender(&w);
+        w.accelerator_sender.attach_sender(&w);
         w
     }
 }
 
-impl Context for Worker {
+impl Context for accelerator {
     fn run (&mut self)
     {
         // Define the shape of the tensor
@@ -34,7 +34,7 @@ impl Context for Worker {
             kvcache_value: kvcache_tensor
         };
 
-        let _ = self.worker_sender.enqueue(&self.time, 
+        let _ = self.accelerator_sender.enqueue(&self.time, 
                                            ChannelElement { time: self.time.tick(), data: my_kvcache_tensor });
     
         return;

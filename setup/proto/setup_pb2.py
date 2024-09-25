@@ -13,15 +13,13 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x17setup/proto/setup.proto\x12\x05setup\"\x9a\x02\n\x0b\x41\x63\x63\x65lerator\x12\x14\n\x0boptimize_pr\x18\xe8\x07 \x01(\x08\x12\x17\n\x0enum_iterations\x18\xe9\x07 \x01(\x03\x12\x14\n\x0bnum_swapped\x18\xea\x07 \x01(\x03\x12\x11\n\tx_on_chip\x18\x01 \x01(\x03\x12\x11\n\ty_on_chip\x18\x02 \x01(\x03\x12\x12\n\nx_off_chip\x18\x64 \x01(\x03\x12\x13\n\ny_off_chip\x18\xc8\x01 \x01(\x03\x12\x10\n\x08lane_dim\x18\x05 \x01(\x03\x12\x11\n\tstage_dim\x18\x06 \x01(\x03\x12\x0c\n\x04\x66req\x18\x07 \x01(\x02\x12\x0c\n\x04word\x18\x08 \x01(\x03\x12\x10\n\x08sram_cap\x18\t \x01(\x02\x12\x0e\n\x06net_bw\x18\x0e \x01(\x02\x12\x14\n\x0c\x62uffer_depth\x18\x0f \x01(\x02\"1\n\x06System\x12\'\n\x0b\x61\x63\x63\x65lerator\x18\x01 \x01(\x0b\x32\x12.setup.Acceleratorb\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x17setup/proto/setup.proto\x12\x05setup\"k\n\x06System\x12\x15\n\rSRAM_Capacity\x18\n \x01(\x02\x12\x0e\n\x06HBM_BW\x18\x01 \x01(\x02\x12\x14\n\x0cHBM_Capacity\x18\x02 \x01(\x02\x12\x0e\n\x06\x44\x44R_BW\x18\x03 \x01(\x02\x12\x14\n\x0c\x44\x44R_Capacity\x18\x04 \x01(\x02\x62\x06proto3')
 
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, globals())
 _builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'setup.proto.setup_pb2', globals())
 if _descriptor._USE_C_DESCRIPTORS == False:
 
   DESCRIPTOR._options = None
-  _ACCELERATOR._serialized_start=35
-  _ACCELERATOR._serialized_end=317
-  _SYSTEM._serialized_start=319
-  _SYSTEM._serialized_end=368
+  _SYSTEM._serialized_start=34
+  _SYSTEM._serialized_end=141
 # @@protoc_insertion_point(module_scope)
