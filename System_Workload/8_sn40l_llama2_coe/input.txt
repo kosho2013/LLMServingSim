@@ -1,8 +1,18 @@
-level2_bw: 13107.2
-level3_bw: 1024
-weight_size: 12
-kvcache_size: 2
+Memory:
+level1_bw: 13107
+level2_bw: 1024
 
-Memory Traffic 1:
-level3 level2 weight_size
-level3 level2 kvcache_size
+Tensor:
+weight_expert1: 6442450944 2
+kvcache_expert1: 1073741824 2
+weight_expert2: 6442450944 2
+kvcache_expert2: 1073741824 2
+weight_expert3: 6442450944 2
+kvcache_expert3: 1073741824 2
+
+Trace:
+weight_expert2
+kvcache_expert2
+
+
+

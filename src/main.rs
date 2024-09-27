@@ -4,10 +4,11 @@ pub mod templates;
 
 use std::iter::FlatMap;
 use std::mem;
+use frunk::labelled::chars::L;
 use rand::seq::SliceRandom; // Import the SliceRandom trait
 use rand::Rng;
-use templates::accelerator::accelerator;
-use templates::sram::sram;
+use templates::l2::l2;
+use templates::l1::l1;
 use std::collections::{HashMap, HashSet};
 use std::hash::Hash;
 use std::{cmp, env};
@@ -23,26 +24,37 @@ use prost::Message;
 use dam::{logging::LogEvent, simulation::*};
 use dam::{shim::RunMode, simulation::{DotConvertible, InitializationOptionsBuilder, ProgramBuilder, RunOptionsBuilder}};
 use serde::{Deserialize, Serialize};
-use std::fs::File;
-use std::io::Read;
 
 
 fn main()
 {
-
-    
-
     // define the program builder
     let mut parent = ProgramBuilder::default();
-    let capacity = 1000;
-    let (sender, receiver) = parent.bounded(capacity);
+    // let capacity = 1000;
+    let (sender, receiver) = parent.unbounded();
 
-    // define the compute unit and the L1 cache
-    let accelerator = accelerator::init(sender);
-    let sram = sram::init(receiver);
 
-    parent.add_child(accelerator);
-    parent.add_child(sram);
+
+    
+    let l2_bw = 1024;
+    let mut initial_tensor = vec![(6442450944, 2, "weight_expert1".to_owned()),
+                                                               (1073741824, 2, "kvcache_expert1".to_owned()),
+                                                               (6442450944, 2, "weight_expert2".to_owned()),
+                                                               (1073741824, 2, "kvcache_expert2".to_owned()),
+                                                               (6442450944, 2, "weight_expert3".to_owned()),
+                                                               (1073741824, 2, "kvcache_expert3".to_owned())];
+
+    let mut send_to_l1_tensor = vec!["weight_expert1".to_owned(), "kvcache_expert1".to_owned()];
+
+
+
+
+
+    let l2 = l2::init(sender, l2_bw, initial_tensor, send_to_l1_tensor);
+    let l1 = l1::init(receiver);
+
+    parent.add_child(l2);
+    parent.add_child(l1);
 
 
     // run DAM
@@ -62,7 +74,7 @@ fn main()
             .build()
             .unwrap(),
     );
-    println!("Elapsed cycles: {:?}", executed.elapsed_cycles());
-
+    println!("Elapsed ns: {:?}", executed.elapsed_cycles().unwrap());
+    println!("Elapsed ms: {:?}", executed.elapsed_cycles().unwrap() as f32 / 1e6 as f32);
 
 }

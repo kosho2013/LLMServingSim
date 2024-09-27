@@ -29,6 +29,7 @@ dependencies = [
  "rand_distr",
  "serde",
  "serde_derive",
+ "serde_json",
  "strum",
  "toml",
 ]

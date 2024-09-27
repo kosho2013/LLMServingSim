@@ -10,7 +10,6 @@ serde_json = "1.0"
 dam = { git = "https://github.com/stanford-ppl/DAM-RS.git", branch = "dev", default-features=true, features = ["coroutines", "dot"]}
 num = "0.4.1"
 serde_derive = "1.0.181"
-serde = "1.0.181"
 toml = "0.7.6"
 home = "0.5.5"
 frunk = "0.4.2"

@@ -3,12 +3,27 @@ use ndarray::{ArcArray, Array, IxDyn};
 
 #[derive(Clone, Debug, Default)]
 pub struct tensor {
-    pub kvcache_shape:Vec<usize>,
-    pub kvcache_value:ArcArray<f32, IxDyn>,
+    pub size: usize, // number of elements
+    pub datatype: usize, // number of bytes per element
+    pub name: String, // name of tensor
+    pub array: Vec<element>, // actual data
+}
+
+#[derive(Clone, Debug, Default)]
+pub struct element {
+    pub data: usize,
+    pub name: String,
 }
 
 impl DAMType for tensor {
     fn dam_size(&self) -> usize {
-        self.kvcache_shape.iter().copied().reduce(|a, b| a * b).unwrap()
+        1
     }
 }
+
+impl DAMType for element {
+    fn dam_size(&self) -> usize {
+        1
+    }
+}
+
