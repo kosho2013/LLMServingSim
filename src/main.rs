@@ -28,21 +28,19 @@ use serde::{Deserialize, Serialize};
 
 fn main()
 {
-    // define the program builder
     let mut parent = ProgramBuilder::default();
-    // let capacity = 1000;
     let (sender, receiver) = parent.unbounded();
 
 
 
     
-    let l2_bw = 1024;
-    let mut initial_tensor = vec![(6442450944, 2, "weight_expert1".to_owned()),
-                                                               (1073741824, 2, "kvcache_expert1".to_owned()),
-                                                               (6442450944, 2, "weight_expert2".to_owned()),
-                                                               (1073741824, 2, "kvcache_expert2".to_owned()),
-                                                               (6442450944, 2, "weight_expert3".to_owned()),
-                                                               (1073741824, 2, "kvcache_expert3".to_owned())];
+    let l2_bw = 1024; // KB/us
+    let mut initial_tensor = vec![(12000000, "weight_expert1".to_owned()), // KB, name
+                                                    (2000000, "kvcache_expert1".to_owned()),
+                                                    (12000000, "weight_expert2".to_owned()),
+                                                    (2000000, "kvcache_expert2".to_owned()),
+                                                    (12000000, "weight_expert3".to_owned()),
+                                                    (2000000, "kvcache_expert3".to_owned())];
 
     let mut send_to_l1_tensor = vec!["weight_expert1".to_owned(), "kvcache_expert1".to_owned()];
 
@@ -74,7 +72,8 @@ fn main()
             .build()
             .unwrap(),
     );
-    println!("Elapsed ns: {:?}", executed.elapsed_cycles().unwrap());
-    println!("Elapsed ms: {:?}", executed.elapsed_cycles().unwrap() as f32 / 1e6 as f32);
+    println!("Elapsed us: {:?}", executed.elapsed_cycles().unwrap());
+    println!("Elapsed ms: {:?}", executed.elapsed_cycles().unwrap() as f32 / 1000 as f32);
+
 
 }

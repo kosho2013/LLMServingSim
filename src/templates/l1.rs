@@ -1,3 +1,5 @@
+use std::collections::HashMap;
+
 use dam::context_tools::*;
 use ndarray::Array;
 
@@ -24,7 +26,7 @@ impl l1 {
 impl Context for l1 {
     fn run (&mut self)
     {
-        // let mut tensors = vec![];
+        let mut tensors = HashMap::new();
 
         loop
         {
@@ -35,22 +37,23 @@ impl Context for l1 {
                 {
                     let element = self.l1_receiver.dequeue(&self.time).unwrap().data;
                     
-                    // if tensors.len() == 0
-                    // {
-
-                    // }
-                    // for i in 0..tensors.len()
-                    // {
-
-                    // }
+                    if tensors.contains_key(&element.name.clone())
+                    {
+                        tensors.insert(element.name.clone(), tensors[&element.name.clone()]+1);
+                    } else
+                    {
+                        tensors.insert(element.name.clone(), 1);
+                    }
                 },
                 Err(channel_status) =>
                 {
+                    println!("{:?}", tensors);
                     return;
                 }
             }
         }
         
+
 
     }
 }

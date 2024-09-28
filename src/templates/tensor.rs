@@ -3,15 +3,12 @@ use ndarray::{ArcArray, Array, IxDyn};
 
 #[derive(Clone, Debug, Default)]
 pub struct tensor {
-    pub size: usize, // number of elements
-    pub datatype: usize, // number of bytes per element
+    pub size: usize, // number of KBs in the tensor
     pub name: String, // name of tensor
-    pub array: Vec<element>, // actual data
 }
 
 #[derive(Clone, Debug, Default)]
-pub struct element {
-    pub data: usize,
+pub struct element { // each element represents one KB
     pub name: String,
 }
 

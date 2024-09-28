@@ -1,0 +1,10 @@
+digraph ProgramGraph {
+    Node_0[shape="rectangle",label="l2(ID_0)"]
+    Node_1[shape="rectangle",label="l1(ID_1)"]
+    Node_0 -> Node_1 [label="Channel(0)",tooltip="Capacity: None\nLatency: 1\nRespLatency: 1"]
+}
+{"kvcache_expert3": 2000000, "weight_expert1": 12000000, "weight_expert2": 12000000, "kvcache_expert1": 2000000, "kvcache_expert2": 2000000, "weight_expert3": 12000000}
+{"kvcache_expert3": 2000000, "weight_expert2": 12000000, "kvcache_expert2": 2000000, "weight_expert3": 12000000}
+{"weight_expert1": 12000000, "kvcache_expert1": 2000000}
+Elapsed us: 13674
+Elapsed ms: 13.674
