@@ -8,23 +8,23 @@ use super::tensor;
 #[context_macro]
 pub struct l2 {
     pub l2_sender: Sender<tensor::element>,
-    pub l2_bw: usize,
-    pub initial_tensor: Vec<(usize, String)>, // number of elements, name of tensor
-    pub send_to_l1_tensor: Vec<String>,
+    pub l2_to_l1_bw: usize,
+    pub l2_initialize: Vec<(String, usize)>, // number of elements, name of tensor
+    pub l2_to_l1: Vec<(String, usize)>,
 }
 
 impl l2 {
     pub fn init(
         l2_sender: Sender<tensor::element>,
-        l2_bw: usize,
-        initial_tensor: Vec<(usize, String)>,
-        send_to_l1_tensor: Vec<String>,  
+        l2_to_l1_bw: usize,
+        l2_initialize: Vec<(String, usize)>,
+        l2_to_l1: Vec<(String, usize)>,  
     ) -> Self {
         let l2 = l2 {
             l2_sender,
-            l2_bw,
-            initial_tensor,
-            send_to_l1_tensor,
+            l2_to_l1_bw,
+            l2_initialize,
+            l2_to_l1,
             context_info: Default::default()
         };
         l2.l2_sender.attach_sender(&l2);
@@ -37,7 +37,7 @@ impl Context for l2 {
     {
         // initialize tensors in L2
         let mut tensors = HashMap::new();
-        for (size, name) in self.initial_tensor.clone()
+        for (name, size) in self.l2_initialize.clone()
         {
             tensors.insert(name, size);
         }
@@ -45,13 +45,13 @@ impl Context for l2 {
         println!("{:?}", tensors);
 
         // move tensors from L2 to L1
-        for name in &self.send_to_l1_tensor
+        for (name, _) in &self.l2_to_l1
         {
             if tensors.contains_key(&(*name))
             {
                 for j in 0..tensors[&(*name)]
                 {
-                    if j % self.l2_bw == 0
+                    if j % self.l2_to_l1_bw == 0
                     {
                         let element = tensor::element {
                             name: (*name.clone()).to_string(),
@@ -72,7 +72,7 @@ impl Context for l2 {
         }
 
         // remove the sent tensors
-        for name in &self.send_to_l1_tensor
+        for (name, _) in &self.l2_to_l1
         {
             if tensors.contains_key(&(*name))
             {

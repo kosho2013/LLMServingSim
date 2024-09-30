@@ -28,27 +28,122 @@ use serde::{Deserialize, Serialize};
 
 fn main()
 {
+    let invalid = 999999;
+
     let mut parent = ProgramBuilder::default();
     let (sender, receiver) = parent.unbounded();
 
 
-
+    let args: Vec<String> = env::args().collect();
+    let log_path = format!("{}{}", &args[1], "/log.txt");
+	let lines = read_to_string(log_path).unwrap();
     
-    let l2_bw = 1024; // KB/us
-    let mut initial_tensor = vec![(12000000, "weight_expert1".to_owned()), // KB, name
-                                                    (2000000, "kvcache_expert1".to_owned()),
-                                                    (12000000, "weight_expert2".to_owned()),
-                                                    (2000000, "kvcache_expert2".to_owned()),
-                                                    (12000000, "weight_expert3".to_owned()),
-                                                    (2000000, "kvcache_expert3".to_owned())];
 
-    let mut send_to_l1_tensor = vec!["weight_expert1".to_owned(), "kvcache_expert1".to_owned()];
+    let mut l2_to_l1_bw: usize = invalid;
+    let mut l1_to_l2_bw: usize = invalid;
+    let mut l2_to_l3_bw: usize = invalid;
+    let mut l3_to_l2_bw: usize = invalid;
+
+    let mut l1_initialize: Vec<(String, usize)> = vec![];
+    let mut l2_initialize: Vec<(String, usize)> = vec![];
+    let mut l3_initialize: Vec<(String, usize)> = vec![];
+
+    let mut l3_to_l2: Vec<(String, usize)> = vec![];
+    let mut l2_to_l3: Vec<(String, usize)> = vec![];
+    let mut l2_to_l1: Vec<(String, usize)> = vec![];
+    let mut l1_to_l2: Vec<(String, usize)> = vec![];
+
+    for line in lines.lines()
+    {
+		if line.starts_with("bandwidth 2 1") 
+		{ 
+			let tmp: Vec<&str> = line.split_whitespace().collect();
+            l2_to_l1_bw = tmp[3].parse().unwrap();
+		}
+
+        if line.starts_with("bandwidth 1 2")
+		{ 
+			let tmp: Vec<&str> = line.split_whitespace().collect();
+            l1_to_l2_bw = tmp[3].parse().unwrap();
+		}
+
+        if line.starts_with("bandwidth 2 3") 
+		{ 
+			let tmp: Vec<&str> = line.split_whitespace().collect();
+            l2_to_l3_bw = tmp[3].parse().unwrap();
+		}
+
+        if line.starts_with("bandwidth 3 2") 
+		{ 
+			let tmp: Vec<&str> = line.split_whitespace().collect();
+            l3_to_l2_bw = tmp[3].parse().unwrap();
+		}
+
+        if line.starts_with("initialize 1") 
+		{ 
+			let tmp: Vec<&str> = line.split_whitespace().collect();
+            let aaa = tmp[2].parse().unwrap();
+            let bbb = tmp[3].parse().unwrap();
+            l1_initialize.push((aaa, bbb));
+		}
+
+        if line.starts_with("initialize 2") 
+		{ 
+			let tmp: Vec<&str> = line.split_whitespace().collect();
+            let aaa = tmp[2].parse().unwrap();
+            let bbb = tmp[3].parse().unwrap();
+            l2_initialize.push((aaa, bbb));
+		}
+
+        if line.starts_with("initialize 3") 
+		{ 
+			let tmp: Vec<&str> = line.split_whitespace().collect();
+            let aaa = tmp[2].parse().unwrap();
+            let bbb = tmp[3].parse().unwrap();
+            l3_initialize.push((aaa, bbb));
+		}
+
+        if line.starts_with("config 0 3 2") 
+		{ 
+			let tmp: Vec<&str> = line.split_whitespace().collect();
+            let aaa = tmp[4].parse().unwrap();
+            let bbb = tmp[5].parse().unwrap();
+            l3_to_l2.push((aaa, bbb));
+		}
+
+        if line.starts_with("config 0 2 3") 
+		{ 
+			let tmp: Vec<&str> = line.split_whitespace().collect();
+            let aaa = tmp[4].parse().unwrap();
+            let bbb = tmp[5].parse().unwrap();
+            l2_to_l3.push((aaa, bbb));
+		}
+
+        if line.starts_with("config 0 2 1") 
+		{ 
+			let tmp: Vec<&str> = line.split_whitespace().collect();
+            let aaa = tmp[4].parse().unwrap();
+            let bbb = tmp[5].parse().unwrap();
+            l2_to_l1.push((aaa, bbb));
+		}
+
+        if line.starts_with("config 0 1 2") 
+		{ 
+			let tmp: Vec<&str> = line.split_whitespace().collect();
+            let aaa = tmp[4].parse().unwrap();
+            let bbb = tmp[5].parse().unwrap();
+            l1_to_l2.push((aaa, bbb));
+		}
+    }
+    
 
 
+    println!("{:?}", l2_to_l1_bw);
+    println!("{:?}", l2_initialize);
+    println!("{:?}", l2_to_l1);
 
 
-
-    let l2 = l2::init(sender, l2_bw, initial_tensor, send_to_l1_tensor);
+    let l2 = l2::init(sender, l2_to_l1_bw, l2_initialize, l2_to_l1);
     let l1 = l1::init(receiver);
 
     parent.add_child(l2);

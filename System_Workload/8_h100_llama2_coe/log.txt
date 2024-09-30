@@ -1,0 +1,12 @@
+bandwidth 2 1 64
+bandwidth 1 2 64
+
+initialize 2 weight_expert1 12000000 
+initialize 2 kvcache_expert1 2000000
+initialize 2 weight_expert2 12000000
+initialize 2 kvcache_expert2 2000000
+initialize 2 weight_expert3 12000000
+initialize 2 kvcache_expert3 2000000
+
+config 0 2 1 weight_expert2 12000000
+config 0 2 1 kvcache_expert2 2000000
