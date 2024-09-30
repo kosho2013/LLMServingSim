@@ -30,9 +30,6 @@ fn main()
 {
     let invalid = 999999;
 
-    let mut parent = ProgramBuilder::default();
-    let (sender, receiver) = parent.unbounded();
-
 
     let args: Vec<String> = env::args().collect();
     let log_path = format!("{}{}", &args[1], "/log.txt");
@@ -44,14 +41,14 @@ fn main()
     let mut l2_to_l3_bw: usize = invalid;
     let mut l3_to_l2_bw: usize = invalid;
 
-    let mut l1_initialize: Vec<(String, usize)> = vec![];
-    let mut l2_initialize: Vec<(String, usize)> = vec![];
-    let mut l3_initialize: Vec<(String, usize)> = vec![];
+    let mut l1_initialize_tensor: Vec<(String, usize)> = vec![];
+    let mut l2_initialize_tensor: Vec<(String, usize)> = vec![];
+    let mut l3_initialize_tensor: Vec<(String, usize)> = vec![];
 
-    let mut l3_to_l2: Vec<(String, usize)> = vec![];
-    let mut l2_to_l3: Vec<(String, usize)> = vec![];
-    let mut l2_to_l1: Vec<(String, usize)> = vec![];
-    let mut l1_to_l2: Vec<(String, usize)> = vec![];
+    let mut l3_to_l2_tensor: Vec<(String, usize)> = vec![];
+    let mut l2_to_l3_tensor: Vec<(String, usize)> = vec![];
+    let mut l2_to_l1_tensor: Vec<(String, usize)> = vec![];
+    let mut l1_to_l2_tensor: Vec<(String, usize)> = vec![];
 
     for line in lines.lines()
     {
@@ -84,7 +81,7 @@ fn main()
 			let tmp: Vec<&str> = line.split_whitespace().collect();
             let aaa = tmp[2].parse().unwrap();
             let bbb = tmp[3].parse().unwrap();
-            l1_initialize.push((aaa, bbb));
+            l1_initialize_tensor.push((aaa, bbb));
 		}
 
         if line.starts_with("initialize 2") 
@@ -92,7 +89,7 @@ fn main()
 			let tmp: Vec<&str> = line.split_whitespace().collect();
             let aaa = tmp[2].parse().unwrap();
             let bbb = tmp[3].parse().unwrap();
-            l2_initialize.push((aaa, bbb));
+            l2_initialize_tensor.push((aaa, bbb));
 		}
 
         if line.starts_with("initialize 3") 
@@ -100,7 +97,7 @@ fn main()
 			let tmp: Vec<&str> = line.split_whitespace().collect();
             let aaa = tmp[2].parse().unwrap();
             let bbb = tmp[3].parse().unwrap();
-            l3_initialize.push((aaa, bbb));
+            l3_initialize_tensor.push((aaa, bbb));
 		}
 
         if line.starts_with("config 0 3 2") 
@@ -108,7 +105,7 @@ fn main()
 			let tmp: Vec<&str> = line.split_whitespace().collect();
             let aaa = tmp[4].parse().unwrap();
             let bbb = tmp[5].parse().unwrap();
-            l3_to_l2.push((aaa, bbb));
+            l3_to_l2_tensor.push((aaa, bbb));
 		}
 
         if line.starts_with("config 0 2 3") 
@@ -116,7 +113,7 @@ fn main()
 			let tmp: Vec<&str> = line.split_whitespace().collect();
             let aaa = tmp[4].parse().unwrap();
             let bbb = tmp[5].parse().unwrap();
-            l2_to_l3.push((aaa, bbb));
+            l2_to_l3_tensor.push((aaa, bbb));
 		}
 
         if line.starts_with("config 0 2 1") 
@@ -124,7 +121,7 @@ fn main()
 			let tmp: Vec<&str> = line.split_whitespace().collect();
             let aaa = tmp[4].parse().unwrap();
             let bbb = tmp[5].parse().unwrap();
-            l2_to_l1.push((aaa, bbb));
+            l2_to_l1_tensor.push((aaa, bbb));
 		}
 
         if line.starts_with("config 0 1 2") 
@@ -132,19 +129,26 @@ fn main()
 			let tmp: Vec<&str> = line.split_whitespace().collect();
             let aaa = tmp[4].parse().unwrap();
             let bbb = tmp[5].parse().unwrap();
-            l1_to_l2.push((aaa, bbb));
+            l1_to_l2_tensor.push((aaa, bbb));
 		}
     }
     
 
 
-    println!("{:?}", l2_to_l1_bw);
-    println!("{:?}", l2_initialize);
-    println!("{:?}", l2_to_l1);
+    // println!("{:?}", l2_to_l1_bw);
+    // println!("{:?}", l2_initialize_tensor);
+    // println!("{:?}", l2_to_l1_tensor);
 
 
-    let l2 = l2::init(sender, l2_to_l1_bw, l2_initialize, l2_to_l1);
-    let l1 = l1::init(receiver);
+
+
+    let mut parent = ProgramBuilder::default();
+    let (l2_to_l1_sender, l2_to_l1_receiver) = parent.unbounded();
+    let (l1_to_l2_sender, l1_to_l2_receiver) = parent.unbounded();
+
+    let l1 = l1::init(l1_initialize_tensor, l1_to_l2_sender, l1_to_l2_bw, l1_to_l2_tensor, l2_to_l1_receiver);
+    let l2 = l2::init(l2_initialize_tensor, l2_to_l1_sender, l2_to_l1_bw, l2_to_l1_tensor, l1_to_l2_receiver);
+    
 
     parent.add_child(l2);
     parent.add_child(l1);

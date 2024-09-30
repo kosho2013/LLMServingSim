@@ -1,0 +1,25 @@
+digraph ProgramGraph {
+    Node_1[shape="rectangle",label="l2(ID_1)"]
+    Node_0[shape="rectangle",label="l1(ID_0)"]
+    Node_1 -> Node_0 [label="Channel(0)",tooltip="Capacity: None\nLatency: 1\nRespLatency: 1"]
+    Node_0 -> Node_1 [label="Channel(1)",tooltip="Capacity: None\nLatency: 1\nRespLatency: 1"]
+}
+initial tensors in l2: {"weight_expert1": 10, "kvcache_expert1": 8}
+initial tensors in l1: {"aaa": 6, "bbb": 4}
+zzzz
+zzzz
+zzzz
+zzzz
+zzzz
+zzzz
+zzzz
+zzzz
+dddd
+dddd
+dddd
+dddd
+dddd
+dddd
+dddd
+dddd
+dddd
