@@ -1,5 +1,5 @@
-l1_kernel:[]
-l1_throughput:999999
+l1_kernel:[115964, 0]
+l1_throughput:65
 digraph ProgramGraph {
     Node_0[shape="rectangle",label="l1(ID_0)"]
     Node_1[shape="rectangle",label="l2(ID_1)"]
@@ -10,12 +10,12 @@ digraph ProgramGraph {
     Node_2 -> Node_1 [label="Channel(2)",tooltip="Capacity: None\nLatency: 1\nRespLatency: 1"]
     Node_1 -> Node_2 [label="Channel(3)",tooltip="Capacity: None\nLatency: 1\nRespLatency: 1"]
 }
-initial tensors in l2: {"weight_expert3": 12000000, "kvcache_expert3": 2000000, "kvcache_expert2": 2000000, "weight_expert1": 12000000, "kvcache_expert1": 2000000, "weight_expert2": 12000000}
-initial tensors in l1: {}
-initial tensors in l3: {}
-l3 tensors {}
-l2 tensors {"weight_expert3": 12000000, "kvcache_expert3": 2000000, "kvcache_expert2": 2000000, "weight_expert1": 12000000, "kvcache_expert1": 2000000, "weight_expert2": 12000000}
-l1 tensors {"kvcache_expert2": 2000000, "weight_expert2": 12000000}
-Elapsed us: 437500
-Elapsed ms: 437.5
-Elapsed s: 0.4375
+initial tensors in l1: {"kvcache": 0, "weight": 0, "activation": 0}
+initial tensors in l2: {"weight": 169869312, "kvcache": 0, "activation": 393216}
+initial tensors in l3: {"kvcache": 75497472, "activation": 0, "weight": 169869312}
+l3 tensors {"kvcache": 75499008, "weight": 169869312, "activation": 0}
+l1 tensors {"kvcache": 0, "activation": 768, "weight": 3538944}
+l2 tensors {"weight": 171638784, "kvcache": 786432, "activation": 393984}
+Elapsed us: 1277953
+Elapsed ms: 1277.953
+Elapsed s: 1.277953

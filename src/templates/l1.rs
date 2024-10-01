@@ -12,6 +12,7 @@ pub struct l1 {
     pub l1_to_l2_bw: usize,
     pub l1_to_l2_tensor: Vec<(String, usize)>, // number of elements, name of tensor
     pub l2_to_l1_receiver: Receiver<tensor::element>,
+    pub l2_to_l1_receiver_counter: usize,
 }
 
 impl l1 {
@@ -21,6 +22,7 @@ impl l1 {
         l1_to_l2_bw: usize,
         l1_to_l2_tensor: Vec<(String, usize)>, // number of elements, name of tensor
         l2_to_l1_receiver: Receiver<tensor::element>,
+        l2_to_l1_receiver_counter: usize,
     ) -> Self {
         let l1 = l1 {
             l1_initialize_tensor,
@@ -28,6 +30,7 @@ impl l1 {
             l1_to_l2_bw,
             l1_to_l2_tensor,
             l2_to_l1_receiver,
+            l2_to_l1_receiver_counter,
             context_info: Default::default()
         };
         l1.l1_to_l2_sender.attach_sender(&l1);
@@ -52,46 +55,46 @@ impl Context for l1 {
         // send L1 to L2
         for (name, size) in &self.l1_to_l2_tensor
         {
-            if tensors.contains_key(&(*name))
+            for j in 0..*size
             {
-                for j in 0..*size
+                if j % self.l1_to_l2_bw == 0
                 {
-                    if j % self.l1_to_l2_bw == 0
-                    {
-                        let element = tensor::element {
-                            name: (*name.clone()).to_string(),
-                        };
+                    let element = tensor::element {
+                        name: (*name.clone()).to_string(),
+                    };
 
-                        let _ = self.l1_to_l2_sender.enqueue(&self.time, ChannelElement { time: self.time.tick()+1, data: element });
-                        self.time.incr_cycles(1);
-                        tensors.insert(name.to_string(), tensors[&(*name)]-1);
-                    } else
-                    {
-                        let element = tensor::element {
-                            name: (*name.clone()).to_string(),
-                        };
-                        
-                        let _ = self.l1_to_l2_sender.enqueue(&self.time, ChannelElement { time: self.time.tick(), data: element });
-                        tensors.insert(name.to_string(), tensors[&(*name)]-1);
-                    }
-                }
-
-                if tensors[&(*name)] == 0
+                    let _ = self.l1_to_l2_sender.enqueue(&self.time, ChannelElement { time: self.time.tick(), data: element });
+                    self.time.incr_cycles(1);
+                    // tensors.insert(name.to_string(), tensors[&(*name)]-1);
+                } else
                 {
-                    tensors.remove(&(*name));
+                    let element = tensor::element {
+                        name: (*name.clone()).to_string(),
+                    };
+                    
+                    let _ = self.l1_to_l2_sender.enqueue(&self.time, ChannelElement { time: self.time.tick(), data: element });
+                    // tensors.insert(name.to_string(), tensors[&(*name)]-1);
                 }
             }
+
+            // if tensors[&(*name)] == 0
+            // {
+            //     tensors.remove(&(*name));
+            // }
         }
 
 
 
 
         
-
+        let mut counter = 0;
         loop
         {
+            if counter == self.l2_to_l1_receiver_counter
+            {
+                break;
+            }
             let peek_result = self.l2_to_l1_receiver.peek_next(&self.time);
-
             match peek_result {
                 Ok(_) =>
                 {
@@ -104,17 +107,16 @@ impl Context for l1 {
                     {
                         tensors.insert(element.name.clone(), 1);
                     }
-                    println!("zzzz");
+                    counter += 1;
                 },
                 Err(_) =>
                 {
-                    println!("l1 tensors {:?}", tensors);
-                    return;
+                    panic!("Wrong!");
                 }
             }
         }
         
+        println!("l1 tensors {:?}", tensors);
         return;
-
     }
 }

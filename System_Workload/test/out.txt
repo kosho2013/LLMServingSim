@@ -1,25 +1,23 @@
+l1_initialize_tensor[("aaa", 10)]
+l2_initialize_tensor[("bbb", 20)]
+l3_initialize_tensor[("ccc", 10)]
 digraph ProgramGraph {
-    Node_1[shape="rectangle",label="l2(ID_1)"]
     Node_0[shape="rectangle",label="l1(ID_0)"]
+    Node_1[shape="rectangle",label="l2(ID_1)"]
+    Node_2[shape="rectangle",label="l3(ID_2)"]
     Node_1 -> Node_0 [label="Channel(0)",tooltip="Capacity: None\nLatency: 1\nRespLatency: 1"]
     Node_0 -> Node_1 [label="Channel(1)",tooltip="Capacity: None\nLatency: 1\nRespLatency: 1"]
+    Node_2 -> Node_1 [label="Channel(2)",tooltip="Capacity: None\nLatency: 1\nRespLatency: 1"]
+    Node_1 -> Node_2 [label="Channel(3)",tooltip="Capacity: None\nLatency: 1\nRespLatency: 1"]
 }
-initial tensors in l2: {"weight_expert1": 10, "kvcache_expert1": 8}
-initial tensors in l1: {"aaa": 6, "bbb": 4}
+initial tensors in l1: {"aaa": 10}
+initial tensors in l2: {"bbb": 20}
+initial tensors in l3: {"ccc": 10}
 zzzz
 zzzz
 zzzz
-zzzz
-zzzz
-zzzz
-zzzz
-zzzz
-dddd
-dddd
-dddd
-dddd
-dddd
-dddd
-dddd
-dddd
-dddd
+l2 tensors {"bbb": 20}
+l1 tensors {"aaa": 10, "bbb": 6}
+l3 tensors {"bbb": 9, "ccc": 10}
+Elapsed us: 3
+Elapsed ms: 0.003

@@ -40,17 +40,6 @@ l = 96
 h1 = 12288
 h2 = 49152
 
-# OPT 30B
-# l = 48
-# h1 = 7168
-# h2 = 28672
-
-# OPT 6.7B
-# l = 32
-# h1 = 4096
-# h2 = 16384
-
-
 wg = model.addVar(name='wg', vtype=gp.GRB.CONTINUOUS)
 wc = model.addVar(name='wc', vtype=gp.GRB.CONTINUOUS)
 wd = model.addVar(name='wd', vtype=gp.GRB.CONTINUOUS)
@@ -96,28 +85,14 @@ disk_home = model.addVar(name='disk_home', vtype=gp.GRB.CONTINUOUS)
 
 
 
-model.addConstr(bls == 256)
-# model.addConstr(gbs == 32)
-# model.addConstr(num_blocks == 8)
+model.addConstr(bls == 2)
+model.addConstr(gbs == 2)
+model.addConstr(num_blocks == 1)
 
 # model.addConstr(wc == 0.5)
-# model.addConstr(wd == 0.5)
-# model.addConstr(cd == 1)
-# model.addConstr(hc == 1)
-
-
-
-
-# model.addConstr(wg >= 0.01)
-# model.addConstr(wc >= 0.01)
-# model.addConstr(wd >= 0.01)
-# model.addConstr(cg >= 0.01)
-# model.addConstr(cc >= 0.01)
-# model.addConstr(cd >= 0.01)
-# model.addConstr(hg >= 0.01)
-# model.addConstr(hc >= 0.01)
-# model.addConstr(hd >= 0.01)
-
+model.addConstr(wd == 1)
+model.addConstr(cg == 1)
+model.addConstr(hg == 1)
 
 
 
@@ -237,16 +212,86 @@ for v in model.getVars():
         hd = v.x
 
 
-print('------------------------------- memory transfer ----------------------------------------')
-print('initialize')
-print('')
 
-for i in range(n):
-    for j in range(l):
-        if i == 0: # prefill
-            print('prefill: token', i, 'layer', j)
+f = open("prefill.txt", 'w')
+
+f.write('bandwidth 1 2 ' + str(int(gtoc_bdw / 1024**3)) + '\n') # KB/us
+f.write('bandwidth 2 1 ' + str(int(ctog_bdw / 1024**3)) + '\n') # KB/us
+f.write('bandwidth 2 3 ' + str(int(ctod_bdw / 1024**3)) + '\n') # KB/us
+f.write('bandwidth 3 2 ' + str(int(dtoc_bdw / 1024**3)) + '\n') # KB/us
+f.write('throughput 1 ' + str(int(mm_flops / 1000**4)) + '\n') # MFLOP/us
+f.write('throughput 2 ' + str(int(cpu_flops / 1000**4)) + '\n') # MFLOP/us
+f.write('\n')
+
+f.write('initialize 1 weight ' + str(int((8*h1**2+4*h1*h2)*l*wg / 1024)) + '\n')
+f.write('initialize 2 weight ' + str(int((8*h1**2+4*h1*h2)*l*wc / 1024)) + '\n')
+f.write('initialize 3 weight ' + str(int((8*h1**2+4*h1*h2)*l*wd / 1024)) + '\n')
+f.write('initialize 1 activation ' + str(int(2*s*h1*bls*hg / 1024)) + '\n')
+f.write('initialize 2 activation ' + str(int(2*s*h1*bls*hc / 1024)) + '\n')
+f.write('initialize 3 activation ' + str(int(2*s*h1*bls*hd / 1024)) + '\n')
+f.write('initialize 1 kvcache ' + str(int(4*s*h1*bls*l*cg / 1024)) + '\n')
+f.write('initialize 2 kvcache ' + str(int(4*s*h1*bls*l*cc / 1024)) + '\n')
+f.write('initialize 3 kvcache ' + str(int(4*s*h1*bls*l*cd / 1024)) + '\n')
+f.write('\n')
+
+f.write('memory 2 1 weight ' + str(int((wc+wd) * (8*h1**2+4*h1*h2) / 1024)) + '\n') # KB
+f.write('memory 2 1 activation ' + str(int(2*(hc+hd)*s*h1*bls / 1024)) + '\n') # KB
+f.write('memory 1 2 kvcache ' + str(int(4*(cc+cd)*s*h1*bls / 1024)) + '\n') # KB
+f.write('memory 1 2 activation ' + str(int(2*(hc+hd)*s*h1*bls / 1024)) + '\n') # KB
+f.write('memory 3 2 weight ' + str(int(wd*(8*h1**2+4*h1*h2) / 1024)) + '\n') # KB
+f.write('memory 3 2 activation ' + str(int(2*hd*s*h1*bls / 1024)) + '\n') # KB
+f.write('memory 2 3 kvcache ' + str(int(4*cd*bls*s*h1 / 1024)) + '\n') # KB
+f.write('memory 2 3 activation ' + str(int(2*hd*s*h1*bls / 1024)) + '\n') # KB
+f.write('compute 1 kernel1 ' + str(int(bls*(8*s*h1**2+4*s*h1*h2) / 1000 / 1000)) + '\n') # MFLOP
+f.write('compute 1 kernel2 ' + str(int(4*bls*s**2*h1 / 1000 / 1000)) + '\n') # MFLOP
+f.write('\n')
+
+f.close()
 
 
-        else: # decode
-            print('decode: token', i, 'layer', j)
-        
+
+
+
+
+
+
+
+
+
+
+f = open("decode.txt", 'w')
+
+f.write('bandwidth 1 2 ' + str(int(gtoc_bdw / 1024**3)) + '\n') # KB/us
+f.write('bandwidth 2 1 ' + str(int(ctog_bdw / 1024**3)) + '\n') # KB/us
+f.write('bandwidth 2 3 ' + str(int(ctod_bdw / 1024**3)) + '\n') # KB/us
+f.write('bandwidth 3 2 ' + str(int(dtoc_bdw / 1024**3)) + '\n') # KB/us
+f.write('throughput 1 ' + str(int(mm_flops / 1000**4)) + '\n') # MFLOP/us
+f.write('throughput 2 ' + str(int(cpu_flops / 1000**4)) + '\n') # MFLOP/us
+f.write('\n')
+
+f.write('initialize 1 weight ' + str(int((8*h1**2+4*h1*h2)*l*wg / 1024)) + '\n')
+f.write('initialize 2 weight ' + str(int((8*h1**2+4*h1*h2)*l*wc / 1024)) + '\n')
+f.write('initialize 3 weight ' + str(int((8*h1**2+4*h1*h2)*l*wd / 1024)) + '\n')
+f.write('initialize 1 activation ' + str(int(2*s*h1*bls*hg / 1024)) + '\n')
+f.write('initialize 2 activation ' + str(int(2*s*h1*bls*hc / 1024)) + '\n')
+f.write('initialize 3 activation ' + str(int(2*s*h1*bls*hd / 1024)) + '\n')
+f.write('initialize 1 kvcache ' + str(int(4*s*h1*bls*l*cg / 1024)) + '\n')
+f.write('initialize 2 kvcache ' + str(int(4*s*h1*bls*l*cc / 1024)) + '\n')
+f.write('initialize 3 kvcache ' + str(int(4*s*h1*bls*l*cd / 1024)) + '\n')
+f.write('\n')
+
+f.write('memory 2 1 weight ' + str(int((wc+wd) * (8*h1**2+4*h1*h2) / 1024)) + '\n') # KB
+f.write('memory 2 1 activation ' + str(int(2*(hc+hd)*h1*bls / 1024)) + '\n') # KB
+f.write('memory 1 2 activation ' + str(int(2*(hc+hd)*h1*bls / 1024)) + '\n') # KB
+f.write('memory 3 2 weight ' + str(int(wd*(8*h1**2+4*h1*h2) / 1024)) + '\n') # KB
+f.write('memory 3 2 activation ' + str(int(2*hd*h1*bls / 1024)) + '\n') # KB
+f.write('memory 3 2 kvcache ' + str(int(4*cd*bls*s*h1 / 1024)) + '\n') # KB
+f.write('memory 2 3 kvcache ' + str(int(4*cd*bls*h1 / 1024)) + '\n') # KB
+f.write('memory 2 3 activation ' + str(int(2*hd*h1*bls / 1024)) + '\n') # KB
+f.write('compute 1 kernel1 ' + str(int(bls*(8*h1**2+4*h1*h2) / 1000 / 1000)) + '\n') # MFLOP
+f.write('compute 1 kernel2 ' + str(int(4*cg*bls*s*h1 / 1000 / 1000)) + '\n') # MFLOP
+f.write('compute 2 kernel2 ' + str(int(4*(cc+cd)*bls*s*h1 / 1000 / 1000)) + '\n') # MFLOP
+f.write('\n')
+
+f.close()
+

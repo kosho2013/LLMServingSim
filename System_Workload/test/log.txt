@@ -1,12 +1,9 @@
 bandwidth 2 1 2
-bandwidth 1 2 2
+bandwidth 2 3 3
 
-initialize 1 aaa 6 
-initialize 1 bbb 4 
+initialize 1 aaa 10 
+initialize 2 bbb 20 
+initialize 3 ccc 10
 
-initialize 2 weight_expert1 10 
-initialize 2 kvcache_expert1 8
-
-config 0 1 2 aaa 5
-config 0 1 2 bbb 4
-config 0 2 1 weight_expert1 8
+config 0 2 1 bbb 6
+config 0 2 3 bbb 9

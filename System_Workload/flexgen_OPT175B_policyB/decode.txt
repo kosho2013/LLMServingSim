@@ -1,0 +1,29 @@
+bandwidth 1 2 12
+bandwidth 2 1 12
+bandwidth 2 3 2
+bandwidth 3 2 2
+throughput 1 65
+throughput 2 1
+
+initialize 1 weight 0
+initialize 2 weight 0
+initialize 3 weight 339738624
+initialize 1 activation 0
+initialize 2 activation 3145728
+initialize 3 activation 0
+initialize 1 kvcache 0
+initialize 2 kvcache 0
+initialize 3 kvcache 603979776
+
+memory 2 1 weight 3538944
+memory 2 1 activation 6144
+memory 1 2 activation 6144
+memory 3 2 weight 3538944
+memory 3 2 activation 0
+memory 3 2 kvcache 6291456
+memory 2 3 kvcache 12288
+memory 2 3 activation 0
+compute 1 kernel1 927712
+compute 1 kernel2 0
+compute 2 kernel2 6442
+
