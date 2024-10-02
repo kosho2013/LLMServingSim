@@ -10,6 +10,7 @@ use rand::Rng;
 use templates::l1_compute::l1_compute;
 use templates::l2::l2;
 use templates::l1::l1;
+use templates::l2_compute::l2_compute;
 use templates::l3::l3;
 use std::collections::{HashMap, HashSet};
 use std::hash::Hash;
@@ -211,12 +212,13 @@ fn main()
     let l2 = l2::init(l2_initialize_tensor, l2_to_l1_sender, l2_to_l1_bw, l2_to_l1_tensor, l1_to_l2_receiver, l1_to_l2_receiver_counter, l2_to_l3_sender, l2_to_l3_bw, l2_to_l3_tensor, l3_to_l2_receiver, l3_to_l2_receiver_counter);
     let l3 = l3::init(l3_initialize_tensor, l3_to_l2_sender, l3_to_l2_bw, l3_to_l2_tensor, l2_to_l3_receiver, l2_to_l3_receiver_counter);
     let l1_compute = l1_compute::init(l1_kernel, l1_throughput);
-
+    let l2_compute = l2_compute::init(l2_kernel, l2_throughput);
 
     parent.add_child(l1);
     parent.add_child(l2);
     parent.add_child(l3);
     parent.add_child(l1_compute);
+    parent.add_child(l2_compute);
 
     // run DAM
     let initialized: dam::simulation::Initialized = parent

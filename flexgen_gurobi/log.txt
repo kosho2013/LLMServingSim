@@ -8,8 +8,8 @@ Gurobi Optimizer version 10.0.3 build v10.0.3rc0 (linux64)
 CPU model: Intel(R) Xeon(R) CPU E7-8890 v3 @ 2.50GHz, instruction set [SSE2|AVX|AVX2]
 Thread count: 72 physical cores, 144 logical processors, using up to 144 threads
 
-Optimize a model with 25 rows, 34 columns and 48 nonzeros
-Model fingerprint: 0xa35ac853
+Optimize a model with 26 rows, 34 columns and 49 nonzeros
+Model fingerprint: 0x96792405
 Model has 18 quadratic constraints
 Variable types: 31 continuous, 3 integer (0 binary)
 Coefficient statistics:
@@ -18,7 +18,7 @@ Coefficient statistics:
   QLMatrix range   [6e-05, 3e+11]
   Objective range  [1e+00, 1e+00]
   Bounds range     [1e+00, 1e+00]
-  RHS range        [1e+00, 2e+12]
+  RHS range        [5e-01, 2e+12]
   QRHS range       [7e+09, 7e+09]
 Warning: Model contains large rhs
 Warning: Quadratic constraints contain large coefficient range
@@ -26,57 +26,57 @@ Warning: Quadratic constraints contain large coefficient range on linear part
 Warning: Model contains large rhs on quadratic constraints
          Consider reformulating model or setting NumericFocus parameter
          to avoid numerical issues.
-Presolve removed 25 rows and 32 columns
+Presolve removed 26 rows and 32 columns
 Presolve time: 0.00s
 Presolved: 4 rows, 3 columns, 5 nonzeros
 Presolved model has 1 bilinear constraint(s)
 Variable types: 3 continuous, 0 integer (0 binary)
 
-Root relaxation: objective 2.592000e+03, 1 iterations, 0.00 seconds (0.00 work units)
+Root relaxation: objective 4.744295e+01, 1 iterations, 0.00 seconds (0.00 work units)
 
     Nodes    |    Current Node    |     Objective Bounds      |     Work
  Expl Unexpl |  Obj  Depth IntInf | Incumbent    BestBd   Gap | It/Node Time
 
-*    0     0               0    2592.0000000 2592.00000  0.00%     -    0s
+*    0     0               0      47.4429450   47.44295  0.00%     -    0s
 
-Explored 1 nodes (1 simplex iterations) in 0.02 seconds (0.00 work units)
+Explored 1 nodes (1 simplex iterations) in 0.01 seconds (0.00 work units)
 Thread count was 144 (of 144 available processors)
 
-Solution count 1: 2592 
+Solution count 1: 47.4429 
 
 Optimal solution found (tolerance 1.00e-03)
-Best objective 2.592000000000e+03, best bound 2.592000000000e+03, gap 0.0000%
+Best objective 4.744294504663e+01, best bound 4.744294504663e+01, gap 0.0000%
 wg 0.0
-wc 0.0
-wd 1.0
-cg 1.0
+wc 0.5
+wd 0.5
+cg 0.0
 cc 0.0
-cd 0.0
-hg 1.0
-hc 0.0
+cd 1.0
+hg 0.0
+hc 1.0
 hd 0.0
-bls 2.0
-gbs 2.0
-num_blocks 1.0
-T 5184.0
-Tpre 1.6875
-Tgen 1.6875
-latency_per_request 2592.0
-ctogp 0.28125
-gtocp 0.0
-dtocp 1.6875
-ctodp 0.0
-compp 0.05748648534646154
-ctogg 0.28125
-gtocg 0.0
-dtocg 1.6875
-ctodg 0.0
-compg 0.00011227829169230769
-gpu_compg 0.00011227829169230769
-cpu_compg 0.0
-gpu_home 4857004032.0
-gpu_w 7247757312.0
-cpu_home 0.0
-cpu_w 3623878656.0
-disk_home 347892350976.0
-tokens_per_s 0.012345679012345678
+bls 256.0
+gbs 32.0
+num_blocks 8.0
+T 12145.393931937318
+Tpre 7.358270124347058
+Tgen 3.84375
+latency_per_request 47.44294504663015
+ctogp 0.28173828125
+gtocp 0.50048828125
+dtocp 0.84375
+ctodp 3.0
+compp 7.358270124347077
+ctogg 0.28173828125
+gtocg 0.00048828125
+dtocg 3.84375
+ctodg 0.005859375
+compg 0.02056396270670769
+gpu_compg 0.014272506706707691
+cpu_compg 0.006291456000000001
+gpu_home 0.0
+gpu_w 10468982784.0
+cpu_home 177167400960.0
+cpu_w 11475615744.0
+disk_home 792421466112.0
+tokens_per_s 0.674494384118613

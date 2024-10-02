@@ -85,14 +85,14 @@ disk_home = model.addVar(name='disk_home', vtype=gp.GRB.CONTINUOUS)
 
 
 
-model.addConstr(bls == 2)
-model.addConstr(gbs == 2)
-model.addConstr(num_blocks == 1)
+model.addConstr(bls == 256)
+model.addConstr(gbs == 32)
+model.addConstr(num_blocks == 8)
 
-# model.addConstr(wc == 0.5)
-model.addConstr(wd == 1)
-model.addConstr(cg == 1)
-model.addConstr(hg == 1)
+model.addConstr(wc == 0.5)
+model.addConstr(wd == 0.5)
+model.addConstr(cd == 1)
+model.addConstr(hc == 1)
 
 
 
@@ -149,7 +149,7 @@ model.addConstr(cpu_compg == 4 * (cc + cd) * bls * (s) * h1 / cpu_flops)
 model.addConstr(gpu_home == wg * (8*h1**2 + 4*h1*h2) * l + hg * 2*s * h1 * bls + 4 * (s) * h1 * cg * bls * l)
 model.addConstr(gpu_w == 2 * (1 - wg) * (8*h1**2 + 4*h1*h2) + (1 - hg) * 2 * s * h1 * bls)
 model.addConstr(cpu_home == wc * (8*h1**2 + 4*h1*h2) * l + hc * 2 * s * h1 * bls + 4 * (s) * h1 * cc * bls * l)
-model.addConstr(cpu_w == wd * (8*h1**2 + 4*h1*h2) + (1-hg) * 2 * h1 * s * bls + (1-cg) * 4 * (s) * h1 * bls)
+model.addConstr(cpu_w == wd * (8*h1**2 + 4*h1*h2) + hd * 2 * h1 * s * bls + cd * 4 * (s) * h1 * bls)
 model.addConstr(disk_home == (8*h1**2 + 4*h1*h2) * wd * l + hd * 2 * s * h1 * bls + cd * 4 * (s) * h1 * bls * l)
 
 
